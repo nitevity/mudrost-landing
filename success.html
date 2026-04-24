@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Confirmed | The Non-Technical Founder's Guide</title>
+
+  <!-- Google Analytics (GA4) + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMBWGGB4ZE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DMBWGGB4ZE');
+    gtag('config', 'AW-18099530997');
+
+    /* Fire purchase conversion — this is the confirmed sale signal */
+    gtag('event', 'purchase', {
+      transaction_id: Date.now().toString(),
+      value: 97.00,
+      currency: 'USD',
+      items: [{ item_id: 'ntfg-001', item_name: 'Non-Technical Founders Guide', price: 97.00, quantity: 1 }]
+    });
+
+    /* Google Ads conversion — fires on confirmed purchase page load */
+    gtag('event', 'conversion', {
+      send_to: 'AW-18099530997',
+      value: 97.0,
+      currency: 'USD',
+      transaction_id: Date.now().toString()
+    });
+  </script>
+
+  <!-- TikTok Pixel -->
+  <script>
+    !function(w,d,t){
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+      ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+      for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+      ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var s=document.createElement("script");s.type="text/javascript";s.async=!0;s.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(s,a)};
+      ttq.load('TT-D7JV95JC77UEGT4VJQ90');
+      ttq.page();
+      /* Fire confirmed purchase event */
+      ttq.track('CompletePayment', {
+        content_id: 'ntfg-001',
+        content_name: 'Non-Technical Founders Guide',
+        currency: 'USD',
+        value: 97
+      });
+    }(window,document,'ttq');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:   #0D1B2A;
+      --teal:   #00B4D8;
+      --orange: #F97316;
+      --green:  #16A34A;
+      --white:  #FFFFFF;
+      --off-white: #F8FAFC;
+      --grey:   #64748B;
+      --text:   #1E293B;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      border-bottom: 3px solid var(--teal);
+      padding: 16px 20px;
+      text-align: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--teal); }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 52px 44px;
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 32px rgba(13,27,42,0.08);
+    }
+
+    /* Animated checkmark */
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), #15803D);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.5); opacity: 0; }
+      70%  { transform: scale(1.1); }
+      100% { transform: scale(1);   opacity: 1; }
+    }
+
+    .check-circle svg { width: 40px; height: 40px; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--grey);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* Download box */
+    .download-box {
+      background: var(--off-white);
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+    }
+
+    .download-box h3 {
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .download-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .download-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .download-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-download {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.15s;
+      width: 100%;
+    }
+
+    .btn-download:hover { background: #152638; }
+
+    /* Email note */
+    .email-note {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 0.875rem;
+      color: #92400E;
+      margin-bottom: 28px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .email-note strong { display: block; margin-bottom: 4px; color: #78350F; }
+
+    /* Next steps */
+    .next-steps {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 24px;
+    }
+
+    .next-steps h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 16px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .step p strong { color: var(--navy); }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 24px 20px;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.775rem;
+    }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--teal); }
+
+    @media (max-width: 480px) {
+      .card { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">The <span>Non-Technical</span> Founder</span>
+</nav>
+
+<main>
+  <div class="card">
+
+    <!-- Animated tick -->
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <h1>Payment Confirmed. Welcome.</h1>
+    <p class="subtitle">
+      Your order for <strong>The Non-Technical Founder's Guide</strong> is complete.
+      A receipt has been sent to your email by Stripe. Your downloads are ready below.
+    </p>
+
+    <!-- Download box -->
+    <div class="download-box">
+      <h3>Your Complete Bundle</h3>
+      <ul class="download-list">
+        <li>The Non-Technical Founder's Guide (PDF)</li>
+        <li>Market Intelligence Framework &amp; templates</li>
+        <li>30-Day Launch Calendar</li>
+        <li>No-Code Tech Stack Decision Trees</li>
+        <li>Automation Blueprints</li>
+        <li>Paid Ads Playbook — Google + TikTok</li>
+        <li>Metrics Scorecard &amp; KPI templates</li>
+        <li>End-to-End Security Checklist</li>
+      </ul>
+      <!--
+        DOWNLOAD LINK: Replace href below with your actual download link.
+        Options: Google Drive shared link, Dropbox, or a direct file URL.
+        Make sure it is set to "Anyone with the link can view/download."
+      -->
+      <a href="#" class="btn-download">Download Your Guide →</a>
+    </div>
+
+    <!-- Email note -->
+    <div class="email-note">
+      <strong>📧 Also check your inbox.</strong>
+      We have sent your access link and a welcome email to the address you used at checkout. Check your spam folder if you do not see it within 5 minutes.
+    </div>
+
+    <!-- Next steps -->
+    <div class="next-steps">
+      <h4>Your next three steps</h4>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <p><strong>Start with the 30-Day Launch Calendar.</strong> Open it first. It tells you exactly what to do today, tomorrow, and every day for the next 30 days.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p><strong>Read the Market Intelligence Framework.</strong> This changes how you see your market. Do it before you spend a single dollar on advertising.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p><strong>Run the Security Checklist within your first week.</strong> One hour now protects everything you build from here forward.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 The Non-Technical Founder. All rights reserved.</p>
+  <p style="margin-top:6px;">
+    <a href="/">Home</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>

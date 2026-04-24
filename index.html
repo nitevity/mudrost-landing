@@ -3,18 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Non-Technical Founder's Guide — the complete system to build, launch and scale a profitable business without writing a single line of code.">
-  <title>The Non-Technical Founder's Guide | Build Without Code</title>
+  <meta name="description" content="The Non-Technical Founder's Build System — 3 production SaaS products built in 60 days. Zero code written. The exact 8-stage system, prompts, and decisions documented from real builds.">
+  <title>The Non-Technical Founder's Build System | Mudrost Systems</title>
 
-  <!-- =========================================================
-       TRACKING PIXELS
-       Replace all placeholder IDs before going live:
-       - GA4:          G-XXXXXXXXXX
-       - Google Ads:   AW-XXXXXXXXXX  /  AW-XXXXXXXXXX/XXXXXXXX
-       - TikTok:       YOUR_TIKTOK_PIXEL_ID
-  ========================================================= -->
-
-  <!-- Google Analytics (GA4) -->
+  <!-- Google Analytics (GA4) + Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMBWGGB4ZE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -46,7 +38,6 @@
   (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
   ml('account', '2275581');
   </script>
-  <!-- End MailerLite Universal -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,195 +45,125 @@
 
   <style>
     /* ============================================================
-       DESIGN TOKENS
+       TOKENS
     ============================================================ */
     :root {
-      --navy:        #0D1B2A;
-      --navy-mid:    #152638;
-      --navy-light:  #1E3A52;
-      --teal:        #00B4D8;
-      --teal-dark:   #009DB8;
-      --orange:      #F97316;
-      --orange-dark: #EA6A0A;
-      --green:       #16A34A;
-      --red:         #DC2626;
-      --white:       #FFFFFF;
-      --off-white:   #F8FAFC;
-      --grey-100:    #F1F5F9;
-      --grey-200:    #E2E8F0;
-      --grey-400:    #94A3B8;
-      --grey-500:    #64748B;
-      --grey-700:    #334155;
-      --text:        #1E293B;
+      --navy:      #0D1B2A;
+      --navy-2:    #152638;
+      --teal:      #00B4D8;
+      --orange:    #F97316;
+      --orange-dk: #EA6A0A;
+      --green:     #16A34A;
+      --white:     #FFFFFF;
+      --off:       #F8FAFC;
+      --g100:      #F1F5F9;
+      --g200:      #E2E8F0;
+      --g400:      #94A3B8;
+      --g500:      #64748B;
+      --g700:      #334155;
+      --text:      #1E293B;
     }
 
     /* ============================================================
        RESET
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.65;
+      font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; }
-    ul, ol { list-style: none; }
     p { margin-bottom: 1rem; }
     p:last-child { margin-bottom: 0; }
-
-    /* ============================================================
-       TYPOGRAPHY SCALE
-    ============================================================ */
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-      line-height: 1.15;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-    }
-    h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; }
-    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; }
-    h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; }
-    h4 { font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif; }
+    ul { list-style: none; }
 
     /* ============================================================
        LAYOUT
     ============================================================ */
-    .container       { max-width: 840px;  margin: 0 auto; padding: 0 20px; }
-    .container--wide { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .wrap  { max-width: 720px;  margin: 0 auto; padding: 0 20px; }
+    .wrap--wide { max-width: 960px; margin: 0 auto; padding: 0 20px; }
     section { padding: 72px 0; }
 
     /* ============================================================
-       SHARED COMPONENTS
+       TYPE
     ============================================================ */
+    h1,h2,h3 { font-family: 'Playfair Display', serif; line-height: 1.15; letter-spacing: -0.02em; color: var(--navy); }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); font-weight: 700; }
+    h3 { font-size: 1.15rem; font-weight: 700; }
+
     .eyebrow {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal);
+      display: block; margin-bottom: 10px;
     }
-    .eyebrow--teal  { color: var(--teal); }
-    .eyebrow--pill  {
-      background: rgba(0,180,216,0.12);
-      border: 1px solid rgba(0,180,216,0.3);
-      padding: 5px 14px;
-      border-radius: 100px;
-    }
-    .eyebrow--pill-white {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.8);
-      padding: 5px 14px;
-      border-radius: 100px;
-    }
-
-    .divider {
-      width: 48px; height: 4px;
-      background: var(--teal);
-      border-radius: 2px;
-      margin: 14px 0 24px;
-    }
-    .divider--center { margin-left: auto; margin-right: auto; }
-
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--grey-500);
-      line-height: 1.75;
-      max-width: 580px;
-    }
-    .section-subtitle--center { margin: 0 auto; text-align: center; }
+    .divider { width: 40px; height: 3px; background: var(--teal); border-radius: 2px; margin: 14px 0 22px; }
+    .divider--c { margin-left: auto; margin-right: auto; }
 
     /* ============================================================
-       BUTTONS
+       BUTTON — one button, one color, zero confusion
     ============================================================ */
-    .btn {
+    .cta {
       display: inline-block;
-      padding: 16px 32px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      border: none;
-      text-align: center;
-      line-height: 1;
-    }
-    .btn--primary {
       background: var(--orange);
       color: var(--white);
-      box-shadow: 0 4px 18px rgba(249,115,22,0.38);
+      font-weight: 800; font-size: 1.05rem;
+      padding: 18px 36px;
+      border-radius: 8px;
+      border: none; cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 18px rgba(249,115,22,0.35);
     }
-    .btn--primary:hover {
-      background: var(--orange-dark);
+    .cta:hover {
+      background: var(--orange-dk);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(249,115,22,0.45);
     }
-    .btn--ghost {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.3);
-    }
-    .btn--ghost:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-    }
-    .btn--lg { padding: 20px 40px; font-size: 1.1rem; }
-    .btn--full { width: 100%; }
+    .cta--full { width: 100%; display: block; }
+    .cta--lg { padding: 20px 40px; font-size: 1.15rem; }
+    .cta-sub { font-size: 0.75rem; color: var(--g400); margin-top: 10px; }
 
     /* ============================================================
-       ANNOUNCEMENT BAR
+       ANNOUNCEMENT
     ============================================================ */
-    .announcement {
-      background: var(--teal);
-      color: var(--navy);
-      text-align: center;
-      padding: 11px 20px;
-      font-size: 0.875rem;
-      font-weight: 600;
+    .ann {
+      background: var(--teal); color: var(--navy);
+      text-align: center; padding: 10px 20px;
+      font-size: 0.85rem; font-weight: 700;
     }
-    .announcement a { color: var(--navy); font-weight: 800; text-decoration: underline; }
 
     /* ============================================================
-       NAVIGATION
+       NAV — logo + one button only
     ============================================================ */
     .nav {
       background: var(--navy);
       border-bottom: 3px solid var(--teal);
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      padding: 14px 20px;
+      position: sticky; top: 0; z-index: 200;
     }
-    .nav__inner {
-      max-width: 1100px; margin: 0 auto;
+    .nav__in {
+      max-width: 960px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
     }
-    .nav__logo {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.1rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
+    .nav__logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1rem; font-weight: 700; }
     .nav__logo span { color: var(--teal); }
-    .nav__cta {
-      background: var(--orange);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.875rem;
+    .nav__btn {
+      background: var(--orange); color: var(--white);
+      padding: 9px 20px; border-radius: 6px;
+      font-weight: 700; font-size: 0.85rem;
+      text-decoration: none;
       transition: background 0.15s;
       white-space: nowrap;
     }
-    .nav__cta:hover { background: var(--orange-dark); }
+    .nav__btn:hover { background: var(--orange-dk); }
 
     /* ============================================================
        HERO
@@ -250,1178 +171,835 @@
     .hero {
       background: var(--navy);
       padding: 80px 0 88px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute; top: -30%; right: -15%;
-      width: 560px; height: 560px;
+      position: absolute; top: -40%; right: -15%;
+      width: 500px; height: 500px;
       background: radial-gradient(circle, rgba(0,180,216,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -20%; left: -10%;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero__inner { position: relative; z-index: 1; }
-    .hero h1 {
-      color: var(--white);
-      max-width: 800px;
+    .hero__kicker {
+      display: inline-block;
+      border: 1px solid rgba(0,180,216,0.35);
+      background: rgba(0,180,216,0.08);
+      color: var(--teal);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
       margin-bottom: 22px;
     }
+    .hero h1 { color: var(--white); max-width: 680px; margin-bottom: 8px; }
     .hero h1 .hl { color: var(--teal); }
+    .hero__proof-line {
+      font-size: 0.85rem; color: rgba(255,255,255,0.45);
+      margin-bottom: 24px; font-style: italic;
+    }
     .hero__sub {
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: rgba(255,255,255,0.72);
-      max-width: 640px;
-      line-height: 1.75;
+      font-size: 1.1rem; color: rgba(255,255,255,0.7);
+      max-width: 600px; line-height: 1.75;
       margin-bottom: 36px;
       font-family: 'Inter', sans-serif;
     }
-    .hero__proof {
-      display: flex; flex-wrap: wrap; gap: 20px;
+    .hero__numbers {
+      display: flex; flex-wrap: wrap; gap: 32px;
       margin-bottom: 40px;
     }
-    .hero__proof-item {
-      display: flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.875rem;
-    }
-    .hero__proof-item .check {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: rgba(0,180,216,0.2);
-      border: 1.5px solid var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--teal);
-      font-size: 0.6rem;
-      font-weight: 700;
-    }
-    .hero__cta-group {
-      display: flex; flex-wrap: wrap; gap: 14px;
-      align-items: center; margin-bottom: 20px;
-    }
-    .hero__cta-note {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-    }
+    .hero__num span { display: block; }
+    .hero__num .n { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--teal); line-height: 1; }
+    .hero__num .l { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .hero__cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 
     /* ============================================================
-       TRUST BAR
+       PRODUCTS BUILT BAR
     ============================================================ */
-    .trust-bar {
-      background: var(--grey-100);
-      border-top: 1px solid var(--grey-200);
-      border-bottom: 1px solid var(--grey-200);
-      padding: 20px 0;
-      text-align: center;
+    .built-bar { background: var(--navy-2); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
+    .built-bar__in {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      max-width: 960px; margin: 0 auto; padding: 0 20px;
     }
-    .trust-bar p {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--grey-500);
-      margin: 0;
+    .built-bar__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); white-space: nowrap; }
+    .built-bar__sep { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
+    .product-tag {
+      background: rgba(0,180,216,0.1);
+      border: 1px solid rgba(0,180,216,0.2);
+      color: var(--teal);
+      padding: 5px 12px; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600;
     }
+    .product-tag .cat { color: rgba(255,255,255,0.35); font-weight: 400; margin-left: 4px; }
 
     /* ============================================================
-       PROBLEM SECTION
+       PROBLEM
     ============================================================ */
     .problem { background: var(--white); }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-      margin-top: 40px;
-    }
-    .pain-card {
-      background: #FFF7ED;
-      border: 1px solid #FED7AA;
-      border-left: 4px solid var(--orange);
-      border-radius: 8px;
-      padding: 20px 22px;
-    }
-    .pain-card__title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #7C2D12;
-      margin-bottom: 6px;
-    }
-    .pain-card p {
-      font-size: 0.875rem;
-      color: #9A3412;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ============================================================
-       BRIDGE
-    ============================================================ */
-    .bridge {
-      background: var(--navy);
-      padding: 64px 0;
-      text-align: center;
-    }
-    .bridge h2 { color: var(--white); max-width: 700px; margin: 0 auto 16px; }
-    .bridge h2 .hl { color: var(--teal); }
-    .bridge p {
-      color: rgba(255,255,255,0.65);
-      max-width: 560px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-      line-height: 1.75;
-    }
-
-    /* ============================================================
-       PRODUCT INTRODUCTION
-    ============================================================ */
-    .product-intro { background: var(--white); }
-    .product-box {
-      background: linear-gradient(140deg, var(--navy) 0%, var(--navy-light) 100%);
-      border-radius: 16px;
-      padding: 48px 40px;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 48px;
-      align-items: center;
-      margin-top: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-box::after {
-      content: '';
-      position: absolute; top: 0; right: 0;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle at top right, rgba(0,180,216,0.09), transparent 60%);
-      pointer-events: none;
-    }
-    .product-visual { display: flex; flex-direction: column; gap: 12px; }
-    .product-tile {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(0,180,216,0.22);
-      border-radius: 10px;
-      padding: 20px 22px;
-      backdrop-filter: blur(4px);
-    }
-    .product-tile__label {
-      font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 6px;
-    }
-    .product-tile__title {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1.15rem;
-      line-height: 1.35;
-    }
-    .product-tile__list {
-      margin-top: 10px;
-      display: flex; flex-direction: column; gap: 5px;
-    }
-    .product-tile__list li {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.65);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .product-tile__list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
-    .product-badge {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 7px 16px;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      align-self: flex-start;
-    }
-    .product-desc h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-      margin-bottom: 18px;
-      line-height: 1.3;
-    }
-    .product-desc h3 span { color: var(--teal); }
-    .product-desc p { color: rgba(255,255,255,0.72); line-height: 1.75; font-size: 0.975rem; }
-
-    /* ============================================================
-       WHAT'S INSIDE
-    ============================================================ */
-    .inside { background: var(--off-white); }
-    .inside__header { text-align: center; margin-bottom: 48px; }
-    .modules {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 18px;
-    }
-    .module {
-      background: var(--white);
-      border: 1px solid var(--grey-200);
-      border-radius: 12px;
-      padding: 28px 26px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .module:hover {
-      box-shadow: 0 8px 28px rgba(13,27,42,0.09);
-      transform: translateY(-2px);
-    }
-    .module__num {
-      width: 36px; height: 36px;
-      background: var(--navy);
-      color: var(--teal);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.82rem;
-      margin-bottom: 16px;
-    }
-    .module h4 { color: var(--navy); margin-bottom: 8px; font-size: 1rem; line-height: 1.4; }
-    .module p  { color: var(--grey-500); font-size: 0.875rem; line-height: 1.65; margin: 0; }
-
-    /* ============================================================
-       PROOF / RESULTS
-    ============================================================ */
-    .results { background: var(--white); }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 48px 0;
-    }
-    .stat {
-      background: var(--navy);
-      border-radius: 12px;
-      padding: 32px 20px;
-      text-align: center;
-    }
-    .stat__number {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--teal);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .stat__label { color: rgba(255,255,255,0.65); font-size: 0.825rem; line-height: 1.5; }
-
-    .testimonials {
+    .problem__grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 18px;
+      gap: 12px; margin-top: 36px;
     }
-    .testimonial {
-      background: var(--off-white);
-      border: 1px solid var(--grey-200);
-      border-radius: 12px;
-      padding: 28px 26px;
+    .pain {
+      border-left: 3px solid var(--orange);
+      background: #FFF7ED;
+      padding: 18px 20px; border-radius: 0 8px 8px 0;
     }
-    .testimonial__stars { color: #F59E0B; letter-spacing: 2px; font-size: 1rem; margin-bottom: 12px; }
-    .testimonial__text {
-      font-style: italic;
-      font-size: 0.925rem;
-      color: var(--grey-700);
-      line-height: 1.7;
-      margin-bottom: 20px;
+    .pain__title { font-weight: 700; font-size: 0.88rem; color: #7C2D12; margin-bottom: 4px; }
+    .pain p { font-size: 0.85rem; color: #92400E; line-height: 1.6; margin: 0; }
+
+    /* ============================================================
+       SHIFT — the pivot moment
+    ============================================================ */
+    .shift { background: var(--navy); padding: 60px 0; text-align: center; }
+    .shift h2 { color: var(--white); max-width: 620px; margin: 0 auto 16px; }
+    .shift h2 .hl { color: var(--teal); }
+    .shift p { color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; font-size: 1.05rem; line-height: 1.75; }
+
+    /* ============================================================
+       PRODUCT INTRO
+    ============================================================ */
+    .product-intro { background: var(--white); }
+    .product-card {
+      background: linear-gradient(140deg, var(--navy), var(--navy-2));
+      border-radius: 14px; padding: 40px;
+      margin-top: 32px;
+      border: 1px solid rgba(0,180,216,0.2);
+      position: relative; overflow: hidden;
     }
-    .testimonial__author { display: flex; align-items: center; gap: 12px; }
-    .testimonial__avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--navy));
+    .product-card::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle at top right, rgba(0,180,216,0.08), transparent 65%);
+      pointer-events: none;
+    }
+    .product-card__badge {
+      display: inline-block;
+      background: var(--orange); color: var(--white);
+      padding: 5px 14px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .product-card h3 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.6rem; margin-bottom: 12px; }
+    .product-card h3 span { color: var(--teal); }
+    .product-card > p { color: rgba(255,255,255,0.68); line-height: 1.75; font-size: 0.975rem; }
+
+    /* ============================================================
+       STAGES — what's inside
+    ============================================================ */
+    .stages { background: var(--off); }
+    .stages__header { text-align: center; margin-bottom: 40px; }
+    .stage-list { display: flex; flex-direction: column; gap: 12px; }
+    .stage {
+      background: var(--white);
+      border: 1px solid var(--g200);
+      border-radius: 10px;
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      align-items: start;
+      transition: box-shadow 0.15s;
+    }
+    .stage:hover { box-shadow: 0 4px 20px rgba(13,27,42,0.08); }
+    .stage__num {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy);
       display: flex; align-items: center; justify-content: center;
-      color: var(--white);
-      font-weight: 700; font-size: 0.82rem;
-      flex-shrink: 0;
+      font-weight: 900; font-size: 0.82rem;
+      color: var(--teal); flex-shrink: 0;
     }
-    .testimonial__name  { font-weight: 700; font-size: 0.875rem; color: var(--navy); }
-    .testimonial__role  { font-size: 0.775rem; color: var(--grey-400); }
+    .stage h4 { font-size: 0.975rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+    .stage p { font-size: 0.85rem; color: var(--g500); line-height: 1.6; margin: 0; }
+    .stage__tag {
+      display: inline-block;
+      background: var(--g100); color: var(--g500);
+      padding: 2px 8px; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 600;
+      margin-left: 8px; vertical-align: middle;
+    }
+
+    /* ============================================================
+       BUNDLE — what's included
+    ============================================================ */
+    .bundle { background: var(--white); }
+    .bundle__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px; margin-top: 32px;
+    }
+    .bundle-item {
+      border: 1px solid var(--g200);
+      border-radius: 10px; padding: 24px 22px;
+    }
+    .bundle-item__num {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .bundle-item h4 { font-size: 0.975rem; color: var(--navy); margin-bottom: 6px; font-family: 'Inter', sans-serif; font-weight: 700; }
+    .bundle-item p { font-size: 0.85rem; color: var(--g500); line-height: 1.6; margin: 0; }
+
+    /* ============================================================
+       PROOF — real numbers
+    ============================================================ */
+    .proof { background: var(--navy); padding: 72px 0; }
+    .proof__header { text-align: center; margin-bottom: 48px; }
+    .proof__header h2 { color: var(--white); }
+    .proof__header p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 500px; margin: 12px auto 0; }
+    .proof__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 48px;
+    }
+    .proof__stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,180,216,0.15);
+      border-radius: 10px; padding: 24px 16px; text-align: center;
+    }
+    .proof__stat .n { display: block; font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--teal); line-height: 1; margin-bottom: 6px; }
+    .proof__stat .l { color: rgba(255,255,255,0.55); font-size: 0.8rem; line-height: 1.5; }
+    .proof__products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .product-proof {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 22px 20px;
+    }
+    .product-proof__name { font-weight: 700; color: var(--white); font-size: 0.95rem; margin-bottom: 4px; }
+    .product-proof__cat  { font-size: 0.78rem; color: var(--teal); margin-bottom: 10px; }
+    .product-proof__fact { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
     /* ============================================================
        WHO IT'S FOR
     ============================================================ */
-    .for-who { background: var(--off-white); }
-    .for-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 40px;
+    .who { background: var(--off); }
+    .who__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .who__col { background: var(--white); border: 1px solid var(--g200); border-radius: 10px; padding: 26px 24px; }
+    .who__col--yes { border-top: 3px solid var(--green); }
+    .who__col--no  { border-top: 3px solid #EF4444; }
+    .who__col h4   { font-size: 0.88rem; font-weight: 700; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
+    .who__col--yes h4 { color: var(--green); }
+    .who__col--no  h4 { color: #EF4444; }
+    .who__list { display: flex; flex-direction: column; gap: 10px; }
+    .who__list li {
+      font-size: 0.85rem; color: var(--g700);
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
     }
-    .for-col {
-      background: var(--white);
-      border: 1px solid var(--grey-200);
-      border-radius: 12px;
-      padding: 30px 28px;
-    }
-    .for-col--yes { border-top: 4px solid var(--green); }
-    .for-col--no  { border-top: 4px solid var(--red);   }
-    .for-col__title {
-      font-weight: 700; font-size: 0.95rem;
-      margin-bottom: 20px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .for-col--yes .for-col__title { color: var(--green); }
-    .for-col--no  .for-col__title { color: var(--red);   }
-    .for-col__list { display: flex; flex-direction: column; gap: 12px; }
-    .for-col__list li {
-      font-size: 0.875rem;
-      color: var(--grey-700);
-      display: flex; align-items: flex-start; gap: 10px;
-      line-height: 1.55;
-    }
-    .for-col__list li span { flex-shrink: 0; margin-top: 1px; font-weight: 700; }
-    .for-col--yes .for-col__list li span { color: var(--green); }
-    .for-col--no  .for-col__list li span { color: var(--red);   }
+    .who__list li b { flex-shrink: 0; font-weight: 700; }
+    .who__col--yes .who__list li b { color: var(--green); }
+    .who__col--no  .who__list li b { color: #EF4444; }
 
     /* ============================================================
-       OBJECTIONS / FAQ
+       FAQ
     ============================================================ */
-    .objections { background: var(--white); }
-    .faq { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
-    .faq__item {
-      border: 1px solid var(--grey-200);
-      border-radius: 10px;
-      overflow: hidden;
-    }
+    .faq { background: var(--white); }
+    .faq__list { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .faq__item { border: 1px solid var(--g200); border-radius: 10px; overflow: hidden; }
     .faq__q {
-      padding: 20px 22px;
-      font-weight: 700; font-size: 0.95rem;
-      color: var(--navy);
-      cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px;
-      user-select: none;
-      background: var(--white);
+      padding: 18px 20px; font-weight: 700; font-size: 0.92rem;
+      color: var(--navy); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      user-select: none; background: var(--white);
     }
-    .faq__q::after {
-      content: '+';
-      font-size: 1.3rem; font-weight: 300;
-      color: var(--teal);
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
+    .faq__q::after { content: '+'; font-size: 1.3rem; font-weight: 300; color: var(--teal); flex-shrink: 0; transition: transform 0.2s; }
     .faq__item.open .faq__q::after { transform: rotate(45deg); }
-    .faq__a {
-      display: none;
-      padding: 4px 22px 20px;
-      font-size: 0.9rem; color: var(--grey-700);
-      line-height: 1.72;
-      background: var(--off-white);
-    }
+    .faq__a { display: none; padding: 4px 20px 18px; font-size: 0.875rem; color: var(--g700); line-height: 1.7; background: var(--off); }
     .faq__item.open .faq__a { display: block; }
 
     /* ============================================================
-       PRICING
+       PRICING — single card, zero clutter
     ============================================================ */
-    .pricing { background: var(--navy); padding: 88px 0; }
-    .pricing__header { text-align: center; margin-bottom: 48px; }
-    .pricing__header h2 { color: var(--white); }
-    .pricing__header p  { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 480px; margin: 14px auto 0; }
-
+    .pricing { background: var(--navy); padding: 80px 0; }
+    .pricing__h { text-align: center; margin-bottom: 40px; }
+    .pricing__h h2 { color: var(--white); }
+    .pricing__h p  { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 440px; margin: 12px auto 0; }
     .price-card {
       background: rgba(255,255,255,0.04);
-      border: 2px solid rgba(0,180,216,0.35);
-      border-radius: 16px;
-      padding: 36px 32px 32px;
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: center;
+      border: 2px solid rgba(0,180,216,0.3);
+      border-radius: 14px; padding: 36px 32px;
+      max-width: 520px; margin: 0 auto; text-align: center;
       position: relative;
     }
     .price-card__badge {
-      position: absolute;
-      top: -15px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--orange);
-      color: var(--white);
-      padding: 7px 22px;
-      border-radius: 100px;
-      font-size: 0.72rem; font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--orange); color: var(--white);
+      padding: 5px 18px; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
       white-space: nowrap;
     }
-    .price-card__label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 6px;
-    }
-    .price-card__name {
-      font-family: 'Playfair Display', serif;
-      color: var(--white); font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
-    .price-card__was  { color: var(--grey-400); font-size: 0.9rem; text-decoration: line-through; margin-bottom: 4px; }
-    .price-card__now  {
-      font-family: 'Playfair Display', serif;
-      color: var(--white); font-size: 3.5rem;
-      font-weight: 900; line-height: 1;
-    }
-    .price-card__now sup { font-size: 1.3rem; vertical-align: top; margin-top: 8px; display: inline-block; }
-    .price-card__sub  { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 4px; margin-bottom: 20px; }
-    .price-card__list {
-      text-align: left; margin-bottom: 24px;
-      display: flex; flex-direction: column; gap: 8px;
-    }
+    .price-card__label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+    .price-card__name  { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.4rem; margin-bottom: 20px; }
+    .price-card__was   { color: var(--g400); font-size: 0.88rem; text-decoration: line-through; margin-bottom: 2px; }
+    .price-card__now   { font-family: 'Playfair Display', serif; color: var(--white); font-size: 3.8rem; font-weight: 900; line-height: 1; }
+    .price-card__now sup { font-size: 1.4rem; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .price-card__period { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-top: 4px; margin-bottom: 22px; }
+    .price-card__list  { text-align: left; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
     .price-card__list li {
-      color: rgba(255,255,255,0.78); font-size: 0.9rem;
-      display: flex; align-items: flex-start; gap: 10px;
-      line-height: 1.5;
+      color: rgba(255,255,255,0.75); font-size: 0.875rem;
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
     }
     .price-card__list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .price-card__lock { color: rgba(255,255,255,0.38); font-size: 0.775rem; margin-top: 14px; }
+    .price-card__lock { color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-top: 12px; }
 
     /* ============================================================
        GUARANTEE
     ============================================================ */
-    .guarantee {
-      background: var(--white);
-      padding: 72px 0;
-      border-bottom: 1px solid var(--grey-200);
-    }
-    .guarantee__inner {
-      display: flex; align-items: center; gap: 48px;
-      max-width: 700px; margin: 0 auto;
-    }
+    .guarantee { background: var(--white); padding: 60px 0; border-bottom: 1px solid var(--g200); }
+    .guarantee__in { display: flex; align-items: center; gap: 36px; max-width: 640px; margin: 0 auto; }
     .guarantee__badge {
-      width: 120px; height: 120px; flex-shrink: 0;
-      border-radius: 50%;
-      background: var(--navy);
-      border: 4px solid var(--teal);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      width: 100px; height: 100px; flex-shrink: 0; border-radius: 50%;
+      background: var(--navy); border: 3px solid var(--teal);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
-    .guarantee__days  { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--teal); line-height: 1; }
-    .guarantee__label { color: rgba(255,255,255,0.6); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; line-height: 1.4; margin-top: 2px; }
-    .guarantee__text h3 { margin-bottom: 12px; }
-    .guarantee__text p  { color: var(--grey-500); font-size: 0.95rem; line-height: 1.72; }
+    .guarantee__days  { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--teal); line-height: 1; }
+    .guarantee__lbl   { color: rgba(255,255,255,0.5); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; line-height: 1.4; margin-top: 2px; }
+    .guarantee__text h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .guarantee__text p  { color: var(--g500); font-size: 0.9rem; line-height: 1.7; }
 
     /* ============================================================
-       LEAD MAGNET
+       FINAL CTA
     ============================================================ */
-    .lead-magnet { background: var(--off-white); }
-    .lead-magnet__box {
-      background: var(--white);
-      border: 2px solid var(--teal);
-      border-radius: 16px;
-      padding: 40px 36px;
-      max-width: 560px; margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 4px 24px rgba(0,180,216,0.1);
-    }
-    .lead-magnet__box h2 { margin-bottom: 10px; }
-    .lead-magnet__box p  { color: var(--grey-500); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.7; }
-    .ml-form { display: flex; flex-direction: column; gap: 12px; }
-    .ml-form input {
-      width: 100%; padding: 14px 16px;
-      border: 2px solid var(--grey-200); border-radius: 8px;
-      font-size: 1rem; font-family: 'Inter', sans-serif;
-      color: var(--text); outline: none;
-      transition: border-color 0.15s;
-    }
-    .ml-form input:focus { border-color: var(--teal); }
-    .ml-form input::placeholder { color: var(--grey-400); }
-    .ml-form__privacy { font-size: 0.75rem; color: var(--grey-400); margin-top: 4px; }
-
-    /* ============================================================
-       FINAL CTA SECTION
-    ============================================================ */
-    .final-cta { background: var(--off-white); padding: 80px 0; text-align: center; }
-    .final-cta h2 { max-width: 640px; margin: 0 auto 14px; }
-    .final-cta p { color: var(--grey-500); max-width: 500px; margin: 0 auto 36px; font-size: 1.05rem; line-height: 1.75; }
-    .final-cta__note { color: var(--grey-400); font-size: 0.78rem; margin-top: 14px; }
+    .final { background: var(--off); padding: 72px 0; text-align: center; }
+    .final h2 { max-width: 580px; margin: 0 auto 12px; }
+    .final__sub { color: var(--g500); max-width: 480px; margin: 0 auto 32px; font-size: 1rem; line-height: 1.75; }
+    .final__note { color: var(--g400); font-size: 0.75rem; margin-top: 12px; }
 
     /* ============================================================
        FOOTER
     ============================================================ */
-    footer { background: var(--navy); padding: 48px 0; text-align: center; }
-    .footer__logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.2rem; font-weight: 700; display: block; margin-bottom: 16px; }
+    footer { background: var(--navy); padding: 36px 20px; text-align: center; }
+    .footer__logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1rem; font-weight: 700; display: block; margin-bottom: 12px; }
     .footer__logo span { color: var(--teal); }
-    footer p   { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-bottom: 8px; }
-    footer a   { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin: 0 10px; transition: color 0.15s; }
+    footer p { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin-bottom: 6px; }
+    footer a { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin: 0 10px; text-decoration: none; }
     footer a:hover { color: var(--teal); }
-    .footer__disclaimer {
-      max-width: 560px; margin: 20px auto 0;
-      color: rgba(255,255,255,0.25); font-size: 0.75rem; line-height: 1.6;
-    }
+    .footer__disc { max-width: 520px; margin: 14px auto 0; color: rgba(255,255,255,0.2); font-size: 0.72rem; line-height: 1.6; }
 
     /* ============================================================
-       STICKY CTA BAR (mobile)
+       STICKY BAR — mobile
     ============================================================ */
-    .sticky-bar {
+    .sticky {
       position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--navy);
-      border-top: 2px solid var(--teal);
-      padding: 12px 20px;
-      display: none;
-      align-items: center; justify-content: space-between; gap: 12px;
+      background: var(--navy); border-top: 2px solid var(--teal);
+      padding: 11px 20px;
+      display: none; align-items: center; justify-content: space-between; gap: 12px;
       z-index: 199;
     }
-    .sticky-bar__text { color: var(--white); font-size: 0.85rem; font-weight: 600; }
-    .sticky-bar .btn { padding: 12px 20px; font-size: 0.875rem; white-space: nowrap; }
+    .sticky__txt { color: var(--white); font-size: 0.82rem; font-weight: 600; }
+    .sticky .cta { padding: 11px 18px; font-size: 0.85rem; white-space: nowrap; box-shadow: none; }
 
     /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 768px) {
       section { padding: 52px 0; }
-
-      .product-box {
-        grid-template-columns: 1fr;
-        padding: 32px 24px;
-        gap: 28px;
-      }
-      .stats         { grid-template-columns: 1fr; }
-      .for-grid      { grid-template-columns: 1fr; }
-      .guarantee__inner { flex-direction: column; text-align: center; }
-      .price-card    { padding: 40px 24px; }
-      .price-card__now { font-size: 3.5rem; }
-      .lead-magnet__box { padding: 36px 22px; }
-      .sticky-bar    { display: flex; }
-      body           { padding-bottom: 68px; }
+      .hero__numbers { gap: 20px; }
+      .hero__num .n { font-size: 2rem; }
+      .proof__stats { grid-template-columns: repeat(2,1fr); }
+      .proof__products { grid-template-columns: 1fr; }
+      .who__grid { grid-template-columns: 1fr; }
+      .guarantee__in { flex-direction: column; text-align: center; }
+      .price-card { padding: 32px 20px; }
+      .price-card__now { font-size: 3rem; }
+      .sticky { display: flex; }
+      body { padding-bottom: 64px; }
     }
     @media (max-width: 480px) {
-      .hero h1     { font-size: 1.8rem; }
-      .hero__cta-group { flex-direction: column; align-items: stretch; }
-      .btn--ghost  { text-align: center; }
-      .hero__proof { flex-direction: column; gap: 10px; }
+      .hero h1 { font-size: 1.8rem; }
+      .built-bar__in { gap: 8px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===================================================================
-     ANNOUNCEMENT BAR
-=================================================================== -->
-<div class="announcement">
-  🔥 Launch pricing ends soon — save 40% today.
-  <a href="#pricing">Claim your discount →</a>
+<!-- ANNOUNCEMENT -->
+<div class="ann">
+  Launch pricing: $97 — price increases with the next update. <strong>Lock it in now.</strong>
 </div>
 
-<!-- ===================================================================
-     NAVIGATION
-=================================================================== -->
+<!-- NAV -->
 <nav class="nav">
-  <div class="nav__inner">
-    <span class="nav__logo">The <span>Non-Technical</span> Founder</span>
-    <a href="#pricing" class="nav__cta"
+  <div class="nav__in">
+    <span class="nav__logo"><span>Mudrost</span> Systems</span>
+    <a href="#pricing" class="nav__btn"
        onclick="gtag('event','click',{event_category:'nav',event_label:'nav_cta'});">
-      Get the Guide — $97
+      Get the Build System — $97
     </a>
   </div>
 </nav>
 
-<!-- ===================================================================
-     HERO
-=================================================================== -->
-<section class="hero" id="top">
-  <div class="container hero__inner">
-
-    <span class="eyebrow eyebrow--teal eyebrow--pill eyebrow--pill-white">The Complete Founder's Playbook</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero__kicker">Documented from 3 live production builds</span>
 
     <h1>
-      Your Business Idea Is Worth Millions.<br>
-      <span class="hl">Not Knowing the Tech Is Costing You Every Day.</span>
+      I Built 3 SaaS Products in 60 Days.<br>
+      <span class="hl">Not One Line of Code Written.</span>
     </h1>
+    <p class="hero__proof-line">ERTRS · BizHub · DOME — 2 enterprise clients — $48/month infrastructure</p>
 
     <p class="hero__sub">
-      The Non-Technical Founder's Guide gives you the exact system, tools, and frameworks to build, launch, and scale a profitable business — without writing a single line of code, hiring an expensive developer, or wasting months figuring it out alone.
+      The Non-Technical Founder's Build System is the exact 8-stage framework, 40+ tested prompts, and every architecture decision used in those builds — documented so any founder can replicate it.
     </p>
 
-    <div class="hero__proof">
-      <div class="hero__proof-item">
-        <div class="check">✓</div>
-        Step-by-step frameworks — not theory
+    <div class="hero__numbers">
+      <div class="hero__num">
+        <span class="n">3</span>
+        <span class="l">Production<br>SaaS products</span>
       </div>
-      <div class="hero__proof-item">
-        <div class="check">✓</div>
-        No technical background required
+      <div class="hero__num">
+        <span class="n">60</span>
+        <span class="l">Days from<br>first prompt</span>
       </div>
-      <div class="hero__proof-item">
-        <div class="check">✓</div>
-        30-day money-back guarantee
+      <div class="hero__num">
+        <span class="n">$48</span>
+        <span class="l">Monthly<br>infrastructure</span>
+      </div>
+      <div class="hero__num">
+        <span class="n">0</span>
+        <span class="l">Lines of code<br>written manually</span>
       </div>
     </div>
 
-    <div class="hero__cta-group">
-      <a href="#pricing" class="btn btn--primary btn--lg" id="hero-cta"
-         onclick="gtag('event','click',{event_category:'cta',event_label:'hero_primary'});">
+    <div class="hero__cta-wrap">
+      <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00"
+         target="_blank"
+         class="cta cta--lg"
+         onclick="gtag('event','begin_checkout',{currency:'USD',value:97,items:[{item_id:'ntfbs-001',item_name:'Non-Technical Founders Build System',price:97,quantity:1}]});gtag('event','conversion',{'send_to':'AW-18099530997','value':97.0,'currency':'USD'});ttq.track('InitiateCheckout',{content_id:'ntfbs-001',content_name:'Build System',currency:'USD',value:97});">
         Get Instant Access — $97 →
       </a>
-      <a href="#what-inside" class="btn btn--ghost">See What's Inside</a>
+      <p class="cta-sub" style="color:rgba(255,255,255,0.35);">🔒 Secure checkout · Instant delivery · 30-day guarantee</p>
     </div>
-    <p class="hero__cta-note">🔒 Secure checkout &nbsp;·&nbsp; Instant digital delivery &nbsp;·&nbsp; 30-day guarantee</p>
-
   </div>
 </section>
 
-<!-- ===================================================================
-     TRUST BAR
-=================================================================== -->
-<div class="trust-bar">
-  <div class="container--wide">
-    <p>Used by founders building with Google Ads · TikTok · Stripe · MailerLite · Vercel · Notion — without touching a line of code</p>
+<!-- PRODUCTS BUILT BAR -->
+<div class="built-bar">
+  <div class="built-bar__in">
+    <span class="built-bar__label">Products built</span>
+    <div class="built-bar__sep"></div>
+    <span class="product-tag">ERTRS <span class="cat">Clinical Trial Management</span></span>
+    <span class="product-tag">BizHub <span class="cat">Business Intelligence</span></span>
+    <span class="product-tag">DOME <span class="cat">Property Management</span></span>
   </div>
 </div>
 
-<!-- ===================================================================
-     PROBLEM
-=================================================================== -->
+<!-- PROBLEM -->
 <section class="problem">
-  <div class="container">
-
-    <span class="eyebrow eyebrow--teal">The real cost of not knowing</span>
-    <h2>Every Day You Wait, You're Leaving Money on the Table</h2>
+  <div class="wrap">
+    <span class="eyebrow">The gap that costs founders everything</span>
+    <h2>You Have the Idea. The Tech Is the Wall.</h2>
     <div class="divider"></div>
-    <p class="section-subtitle">
-      Most founders with great ideas stall because the technical side feels like a foreign language. The result? Months wasted. Money burned. Competitors who move faster — win.
+    <p style="color:var(--g500);font-size:1rem;line-height:1.75;max-width:580px;">
+      Every non-technical founder hits the same five walls. Not lack of vision — lack of the system to execute it.
     </p>
 
-    <ul class="pain-grid">
-      <li class="pain-card">
-        <div class="pain-card__title">You have the idea. You don't have the execution.</div>
-        <p>Your vision is clear. The path to build it — less so. Every tool, every platform, every decision feels like a barrier designed to keep you out.</p>
-      </li>
-      <li class="pain-card">
-        <div class="pain-card__title">Developers quote $5,000 for a landing page.</div>
-        <p>You know something's wrong. You don't know enough to push back. You either overpay or do nothing. Neither moves the business forward.</p>
-      </li>
-      <li class="pain-card">
-        <div class="pain-card__title">80% of your time goes to things that don't move the needle.</div>
-        <p>Setting up tools. Watching YouTube tutorials. Asking the wrong questions in the wrong places. Executing slowly because every step requires a new education.</p>
-      </li>
-      <li class="pain-card">
-        <div class="pain-card__title">You can't verify if the tech advice you're getting is even right.</div>
-        <p>You trust people who sound confident. Sometimes they're right. Sometimes they've just wasted three months of your runway on the wrong approach.</p>
-      </li>
-      <li class="pain-card">
-        <div class="pain-card__title">The market keeps moving while you're still setting up.</div>
-        <p>The opportunity you spotted six months ago? Someone less qualified than you just shipped it and is making sales.</p>
-      </li>
-      <li class="pain-card">
-        <div class="pain-card__title">AI and automation feel overwhelming, not enabling.</div>
-        <p>Every week there's a new tool and a new promise. You don't know what actually matters for your business, right now, at your stage.</p>
-      </li>
-    </ul>
-
-  </div>
-</section>
-
-<!-- ===================================================================
-     BRIDGE
-=================================================================== -->
-<div class="bridge">
-  <div class="container">
-    <h2>What if you had a <span class="hl">complete system</span> — written specifically for founders who build without code?</h2>
-    <p>Not theory. Not vague advice. The actual frameworks, tools, and decisions that let non-technical founders move at the speed of their ideas — from the first dollar to the first hundred thousand.</p>
-  </div>
-</div>
-
-<!-- ===================================================================
-     PRODUCT INTRO
-=================================================================== -->
-<section class="product-intro">
-  <div class="container">
-
-    <span class="eyebrow eyebrow--teal">Introducing</span>
-    <h2>The Non-Technical Founder's Guide</h2>
-    <div class="divider"></div>
-
-    <div class="product-box">
-
-      <div class="product-visual">
-        <div class="product-tile">
-          <div class="product-tile__label">Complete Digital Guide</div>
-          <div class="product-tile__title">The Non-Technical Founder's Complete System</div>
-        </div>
-        <span class="product-badge">Now Available</span>
-        <div class="product-tile">
-          <div class="product-tile__label">What's included</div>
-          <ul class="product-tile__list">
-            <li>Complete founder playbook &amp; frameworks</li>
-            <li>Market intelligence system</li>
-            <li>30-day launch calendar</li>
-            <li>No-code tech stack decision trees</li>
-            <li>Automation &amp; ads blueprints</li>
-          </ul>
-        </div>
+    <div class="problem__grid">
+      <div class="pain">
+        <div class="pain__title">Developers take your budget and your time</div>
+        <p>£5,000–£40,000 for an MVP. Months of back-and-forth. You can't verify the work. You can't change direction without another invoice.</p>
       </div>
-
-      <div class="product-desc">
-        <h3>Built for founders who want to <span>execute</span>, not just learn.</h3>
-        <p>
-          This isn't a course with 47 videos you'll never finish. This is a direct, actionable system — the kind of guide that gets you from "I have an idea" to "I'm making sales" without needing a technical co-founder, an expensive developer, or a computer science degree.
-        </p>
-        <p style="margin-top:14px;">
-          Every framework, every decision tree, every recommended tool has been selected for one reason: it works for founders who are building fast, on lean budgets, with no technical background. If it doesn't earn its place, it isn't in here.
-        </p>
+      <div class="pain">
+        <div class="pain__title">You don't know what questions to ask</div>
+        <p>PostgreSQL or MongoDB? Railway or Vercel? REST or GraphQL? Every decision is a dependency you don't understand — so you defer to whoever you're paying.</p>
       </div>
-
+      <div class="pain">
+        <div class="pain__title">AI tools exist but nobody shows the system</div>
+        <p>ChatGPT can write code. Claude can build features. But nobody shows you the architecture behind the prompts — or the order in which decisions must be made.</p>
+      </div>
+      <div class="pain">
+        <div class="pain__title">Infrastructure decisions made wrong cost months</div>
+        <p>Picking the wrong deployment platform, missing a DNS record, using the wrong auth approach — none of these look like technical problems until they stop everything.</p>
+      </div>
+      <div class="pain">
+        <div class="pain__title">You have no way to verify what "done" looks like</div>
+        <p>A developer tells you the API is ready. You have no way to know if that's true, what it means, or whether it will hold under real usage.</p>
+      </div>
+      <div class="pain">
+        <div class="pain__title">Every build starts from zero</div>
+        <p>No documented system. No reusable prompts. No architecture template. Each product is a new education instead of an iteration on what already works.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     WHAT'S INSIDE
-=================================================================== -->
-<section class="inside" id="what-inside">
-  <div class="container">
+<!-- SHIFT -->
+<div class="shift">
+  <div class="wrap">
+    <h2>You don't need to learn to code.<br>You need to learn <span class="hl">how to direct the AI that codes for you.</span></h2>
+    <p>Claude Code — Anthropic's AI coding agent — writes, tests, and deploys production software. Your job is to give it the right decisions in the right order. That is a learnable, documentable, repeatable system.</p>
+  </div>
+</div>
 
-    <div class="inside__header">
-      <span class="eyebrow eyebrow--teal">Inside the guide</span>
-      <h2>Everything You Need to Build, Launch, and Scale</h2>
-      <div class="divider divider--center"></div>
-      <p class="section-subtitle section-subtitle--center">
-        Not a surface-level overview. A complete system with the depth to actually change how you build your business.
+<!-- PRODUCT INTRO -->
+<section class="product-intro">
+  <div class="wrap">
+    <span class="eyebrow">The system</span>
+    <h2>The Non-Technical Founder's Build System</h2>
+    <div class="divider"></div>
+
+    <div class="product-card">
+      <span class="product-card__badge">Documented from live production builds</span>
+      <h3>An <span>8-stage framework</span> for building production SaaS products without writing code.</h3>
+      <p>
+        Not a tutorial. Not theory. This is the operational system extracted from building ERTRS, BizHub, and DOME — three live products with paying clients, running on $48/month of infrastructure. Every stage contains the decisions, the prompts, and the verification steps used in the actual builds.
+      </p>
+      <p style="margin-top:14px;">
+        If you have Claude Pro and follow this system, you have everything you need to take a product from idea to deployed SaaS. The Day Zero Setup Guide, the Prompt Database, and the Security Checklist are included — they are the companion materials that make each stage executable.
       </p>
     </div>
+  </div>
+</section>
 
-    <div class="modules">
+<!-- STAGES -->
+<section class="stages">
+  <div class="wrap">
+    <div class="stages__header">
+      <span class="eyebrow">The 8 stages</span>
+      <h2>From Idea to Paying Client</h2>
+      <div class="divider divider--c"></div>
+      <p style="color:var(--g500);font-size:0.975rem;max-width:520px;margin:0 auto;">Every stage builds on the previous one. Skipping any stage creates a problem that surfaces later and costs more to fix.</p>
+    </div>
 
-      <div class="module">
-        <div class="module__num">01</div>
-        <h4>The Non-Technical Founder's Map</h4>
-        <p>Understand exactly where you are, where you're going, and the shortest path between the two — without technical overwhelm slowing you down.</p>
+    <div class="stage-list">
+      <div class="stage">
+        <div class="stage__num">01</div>
+        <div>
+          <h4>Ideation & Market Validation <span class="stage__tag">Decision</span></h4>
+          <p>Validate the market before touching any tool. The 4-signal validation framework that filters real opportunities from assumptions. What to check, what the data must show, and when to proceed.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">02</div>
-        <h4>Market Intelligence Framework</h4>
-        <p>Read your market like a professional analyst. Identify opportunities, spot gaps competitors missed, and validate before you spend a dollar building.</p>
+      <div class="stage">
+        <div class="stage__num">02</div>
+        <div>
+          <h4>Day Zero Infrastructure Setup <span class="stage__tag">Setup</span></h4>
+          <p>12 accounts created in the correct order. DNS fully configured — SPF, DKIM, DMARC verified. Legal entity in place. Payment processing active. Every step skipped here becomes a blocker in Stage 4.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">03</div>
-        <h4>No-Code Tech Stack Decisions</h4>
-        <p>The exact tools that replace $50,000 worth of custom development. What to use, when to use it, and what to avoid. Ranked by stage and budget.</p>
+      <div class="stage">
+        <div class="stage__num">03</div>
+        <div>
+          <h4>Architecture Decisions <span class="stage__tag">Decision</span></h4>
+          <p>The decisions made before any code is written — database choice, API structure, auth approach, deployment platform. These cannot be changed later without rewriting everything. Make them correctly once.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">04</div>
-        <h4>The 30-Day Launch Calendar</h4>
-        <p>A day-by-day action plan from zero to first sale. No guessing, no paralysis — just the next right step, every single day, for 30 days.</p>
+      <div class="stage">
+        <div class="stage__num">04</div>
+        <div>
+          <h4>Building with AI Code Agents <span class="stage__tag">Build</span></h4>
+          <p>How to direct Claude Code to build production-quality features. The prompt structures that work. The watch-fors that prevent compounding errors. How to verify output without reading code.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">05</div>
-        <h4>Paid Ads Without Waste</h4>
-        <p>Google Search and TikTok advertising frameworks for founders who cannot afford to waste money testing. Every dollar must earn before the next dollar is spent.</p>
+      <div class="stage">
+        <div class="stage__num">05</div>
+        <div>
+          <h4>Testing & Quality Verification <span class="stage__tag">Build</span></h4>
+          <p>How to verify a feature works before it reaches a client. The exact tests to run, what failure looks like, and how to communicate issues back to the AI agent for resolution.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">06</div>
-        <h4>Automation Blueprints</h4>
-        <p>The systems that let one person do the work of a team. Email sequences, lead capture, follow-up, and delivery — all automated from day one.</p>
+      <div class="stage">
+        <div class="stage__num">06</div>
+        <div>
+          <h4>Production Deployment <span class="stage__tag">Launch</span></h4>
+          <p>Deploying to Railway with automatic GitHub integration. Environment variables. Database migrations. The deployment checklist used before every production push across ERTRS, BizHub, and DOME.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">07</div>
-        <h4>The Founder's Hiring Compass</h4>
-        <p>When to hire technical people, what to pay, how to evaluate their work, and how to stop being taken advantage of — because you'll now know enough to push back.</p>
+      <div class="stage">
+        <div class="stage__num">07</div>
+        <div>
+          <h4>Client Onboarding & Retention <span class="stage__tag">Revenue</span></h4>
+          <p>Getting from "built" to "paying client" — the onboarding process, how to handle the first client demo, and the retention moves that convert a trial to a contract.</p>
+        </div>
       </div>
-
-      <div class="module">
-        <div class="module__num">08</div>
-        <h4>Metrics That Actually Matter</h4>
-        <p>The exact numbers to track at every stage. Know when to double down, when to pivot, and how to read whether your system is actually working.</p>
+      <div class="stage">
+        <div class="stage__num">08</div>
+        <div>
+          <h4>Iteration & Scale <span class="stage__tag">Growth</span></h4>
+          <p>How to run a feedback cycle that feeds back into the build system. Feature prioritisation without a product team. How to scope the next build from what the first one taught you.</p>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="module" style="border-left: 3px solid var(--teal);">
-        <div class="module__num" style="background: var(--teal); color: var(--navy);">09</div>
+<!-- BUNDLE -->
+<section class="bundle">
+  <div class="wrap">
+    <span class="eyebrow">Complete bundle</span>
+    <h2>Four Documents. One System.</h2>
+    <div class="divider"></div>
+    <p style="color:var(--g500);font-size:0.975rem;max-width:540px;">Each companion document is built to execute a specific stage. Together they take you from zero infrastructure to deployed product.</p>
+
+    <div class="bundle__grid">
+      <div class="bundle-item">
+        <div class="bundle-item__num">Document 01</div>
+        <h4>The Non-Technical Founder's Build System</h4>
+        <p>The 8-stage core framework. Every decision, every principle, every verified approach extracted from three live builds.</p>
+      </div>
+      <div class="bundle-item">
+        <div class="bundle-item__num">Document 02</div>
+        <h4>The Day Zero Setup Guide</h4>
+        <p>12 accounts in exact order, complete DNS configuration, legal structure, and a master checklist. The setup that Stage 4 depends on.</p>
+      </div>
+      <div class="bundle-item">
+        <div class="bundle-item__num">Document 03</div>
+        <h4>The Prompt Database</h4>
+        <p>40+ tested prompt cards from real build sessions. Each card: when to use, exact structure, sanitised example, and what to watch for.</p>
+      </div>
+      <div class="bundle-item" style="border-color:var(--teal);">
+        <div class="bundle-item__num" style="color:var(--teal);">Bonus — Document 04</div>
         <h4>End-to-End Security Checklist</h4>
-        <p>A complete 10-section security audit covering domain, hosting, email, payments, customer data, API keys, devices, and incident response — in plain English, built for founders with no IT team.</p>
+        <p>72 checkboxes across 10 sections — domain, hosting, email, payments, data, APIs, devices. Built for founders with no IT team.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     PROOF / RESULTS
-=================================================================== -->
-<section class="results">
-  <div class="container">
+<!-- PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <div class="proof__header">
+      <span class="eyebrow" style="color:var(--teal);">Real outcomes</span>
+      <h2>The Numbers Behind the System</h2>
+      <p>These are not projections. They are from the infrastructure billing dashboards and client contracts of ERTRS Inc.</p>
+    </div>
 
-    <span class="eyebrow eyebrow--teal">Real results</span>
-    <h2>What Non-Technical Founders Are Building</h2>
-    <div class="divider"></div>
-
-    <div class="stats">
-      <div class="stat">
-        <span class="stat__number">$0</span>
-        <span class="stat__label">developer budget needed to get started with the frameworks in this guide</span>
+    <div class="proof__stats">
+      <div class="proof__stat">
+        <span class="n">3</span>
+        <span class="l">Production SaaS<br>products built</span>
       </div>
-      <div class="stat">
-        <span class="stat__number">30</span>
-        <span class="stat__label">days from zero to first paying customer using the launch calendar</span>
+      <div class="proof__stat">
+        <span class="n">60</span>
+        <span class="l">Days from first<br>prompt to first client</span>
       </div>
-      <div class="stat">
-        <span class="stat__number">10×</span>
-        <span class="stat__label">faster execution when you stop guessing and follow a proven framework</span>
+      <div class="proof__stat">
+        <span class="n">$48</span>
+        <span class="l">Monthly infrastructure<br>cost (receipts, not estimates)</span>
+      </div>
+      <div class="proof__stat">
+        <span class="n">2</span>
+        <span class="l">Enterprise clients<br>in Lagos</span>
       </div>
     </div>
 
-    <div class="testimonials">
-
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__text">"I'd been sitting on my idea for 18 months because I thought I needed a developer. After going through this guide, I had my first paying customer in 3 weeks. The market intelligence section alone was worth 10× the price."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">AO</div>
-          <div>
-            <div class="testimonial__name">Amara O.</div>
-            <div class="testimonial__role">Founder, Lagos-based digital product business</div>
-          </div>
-        </div>
+    <div class="proof__products">
+      <div class="product-proof">
+        <div class="product-proof__name">ERTRS</div>
+        <div class="product-proof__cat">Clinical Trial Record Management</div>
+        <div class="product-proof__fact">Enterprise SaaS. Multi-user. Role-based access. PostgreSQL backend. Live with paying clients.</div>
       </div>
-
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__text">"I was paying £2,400 a month for an agency doing what I now do myself in 4 hours a week. The automation blueprints changed everything. I cancelled the agency within 60 days of buying this guide."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">DM</div>
-          <div>
-            <div class="testimonial__name">David M.</div>
-            <div class="testimonial__role">E-commerce founder, United Kingdom</div>
-          </div>
-        </div>
+      <div class="product-proof">
+        <div class="product-proof__name">BizHub</div>
+        <div class="product-proof__cat">Business Intelligence Platform</div>
+        <div class="product-proof__fact">Data aggregation and reporting for SMEs. API integrations. Real-time dashboards. Production deployment.</div>
       </div>
-
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__text">"Every other guide talks about tools. This one shows you how to think. The market intelligence framework helped me spot a gap my competitors completely missed. Six months later we're at $12k MRR."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">TK</div>
-          <div>
-            <div class="testimonial__name">Tolu K.</div>
-            <div class="testimonial__role">Digital product creator</div>
-          </div>
-        </div>
+      <div class="product-proof">
+        <div class="product-proof__name">DOME</div>
+        <div class="product-proof__cat">Property Management System</div>
+        <div class="product-proof__fact">Multi-property tracking, tenant management, maintenance workflows. Full SaaS feature set. Zero freelancers hired.</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     WHO IT'S FOR
-=================================================================== -->
-<section class="for-who">
-  <div class="container">
-
-    <span class="eyebrow eyebrow--teal">Is this right for you?</span>
-    <h2>This Guide Is Not for Everyone</h2>
+<!-- WHO -->
+<section class="who">
+  <div class="wrap">
+    <span class="eyebrow">Is this for you?</span>
+    <h2>Who Gets the Most From This System</h2>
     <div class="divider"></div>
-    <p class="section-subtitle">
-      The founders who get the most from this guide are specific. If you see yourself in the left column, the decision is straightforward.
-    </p>
 
-    <div class="for-grid">
-
-      <div class="for-col for-col--yes">
-        <div class="for-col__title">✓ &nbsp;This is for you if…</div>
-        <ul class="for-col__list">
-          <li><span>✓</span>You have a business idea but feel held back by the technical side</li>
-          <li><span>✓</span>You're spending money on developers or agencies without clarity on what you're getting</li>
-          <li><span>✓</span>You want to build fast and lean — without dependence on expensive technical hires</li>
-          <li><span>✓</span>You're willing to follow a system and do the work</li>
-          <li><span>✓</span>You want to understand the digital economy well enough to make smart, confident decisions</li>
-          <li><span>✓</span>You're building anywhere in the world with an internet connection</li>
+    <div class="who__grid">
+      <div class="who__col who__col--yes">
+        <h4>✓ This is for you if…</h4>
+        <ul class="who__list">
+          <li><b>✓</b>You want to build a software product but don't write code</li>
+          <li><b>✓</b>You've paid developers and been unable to verify or control the output</li>
+          <li><b>✓</b>You understand what SaaS is and want to build one</li>
+          <li><b>✓</b>You have Claude Pro or are willing to get it ($20/month)</li>
+          <li><b>✓</b>You want a system, not a tutorial — decisions, not demonstrations</li>
+          <li><b>✓</b>You're willing to follow the stages in order</li>
         </ul>
       </div>
-
-      <div class="for-col for-col--no">
-        <div class="for-col__title">✗ &nbsp;This is not for you if…</div>
-        <ul class="for-col__list">
-          <li><span>✗</span>You want to learn to code — this is about building without code</li>
-          <li><span>✗</span>You're looking for a get-rich-quick formula with no effort required</li>
-          <li><span>✗</span>You want someone else to build your business for you</li>
-          <li><span>✗</span>You aren't willing to execute and take action on what you learn</li>
-          <li><span>✗</span>You've already mastered tech-enabled business building at a sophisticated level</li>
+      <div class="who__col who__col--no">
+        <h4>✗ This is not for you if…</h4>
+        <ul class="who__list">
+          <li><b>✗</b>You want a "no-code" drag-and-drop tool guide — this builds real SaaS</li>
+          <li><b>✗</b>You want someone to build your product for you</li>
+          <li><b>✗</b>You're looking for a general business guide — this is specifically about building software</li>
+          <li><b>✗</b>You aren't willing to work through the stages methodically</li>
+          <li><b>✗</b>You want passive income with zero active effort</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     OBJECTIONS / FAQ
-=================================================================== -->
-<section class="objections">
-  <div class="container">
-
-    <span class="eyebrow eyebrow--teal">Common questions</span>
-    <h2>Everything You Want to Know Before Deciding</h2>
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <span class="eyebrow">Questions</span>
+    <h2>Answered Directly</h2>
     <div class="divider"></div>
-
-    <div class="faq">
+    <div class="faq__list">
 
       <div class="faq__item">
-        <div class="faq__q">I'm not technical at all. Will I actually understand this?</div>
-        <div class="faq__a">
-          <p>This guide was written specifically for non-technical founders. There is no assumed knowledge. Every concept is explained from first principles in plain English. If you've ever sent an email and used Google, you have everything you need to work through every section of this guide.</p>
-        </div>
+        <div class="faq__q">Do I need any technical knowledge to use this?</div>
+        <div class="faq__a"><p>No. The Build System was created specifically because technical knowledge is not the bottleneck — knowing what decisions to make and in what order is. If you can use Google and follow a structured guide, you have everything required.</p></div>
       </div>
 
       <div class="faq__item">
-        <div class="faq__q">How is this different from the other business guides out there?</div>
-        <div class="faq__a">
-          <p>Most guides teach concepts. This one teaches execution. Every framework comes with a specific action. Every recommendation is battle-tested for lean, non-technical founders — not enterprise companies with 50-person teams and unlimited budgets. You'll notice the difference on the first page.</p>
-        </div>
+        <div class="faq__q">What is Claude Code and do I need to pay for it?</div>
+        <div class="faq__a"><p>Claude Code is Anthropic's AI coding agent — it writes, tests, and deploys code based on your instructions. It requires a Claude Pro subscription at minimum ($20/month). The Build System requires Claude Pro to execute. This cost is included in the $48/month infrastructure total referenced throughout the system.</p></div>
       </div>
 
       <div class="faq__item">
-        <div class="faq__q">I don't have much time. How long will this take?</div>
-        <div class="faq__a">
-          <p>The core frameworks can be read and understood in a focused weekend. The 30-day calendar gives you one clear action per day — nothing that takes more than a couple of hours. This was designed for founders who are building while managing a full life, not people with empty calendars.</p>
-        </div>
+        <div class="faq__q">How is this different from YouTube tutorials on AI coding?</div>
+        <div class="faq__a"><p>Tutorials show you how individual features work. This system documents the architecture decisions that determine whether your product works at all — database choice, auth approach, deployment platform, DNS configuration, legal structure. These decisions are made before any code is written and cannot easily be undone. No tutorial covers them in a structured, ordered way from real production builds.</p></div>
       </div>
 
       <div class="faq__item">
-        <div class="faq__q">What if it doesn't apply to my specific type of business?</div>
-        <div class="faq__a">
-          <p>The frameworks in this guide have been applied to digital products, service businesses, e-commerce, consulting, and SaaS. The principles work across categories because they're based on how non-technical founders think and execute — not on any single business model. If you go through the guide genuinely and don't find value, contact us within 30 days for a full refund.</p>
-        </div>
+        <div class="faq__q">How long does it take to go through the system?</div>
+        <div class="faq__a"><p>Stage 1 and 2 (validation and Day Zero setup) take approximately one week. The first working version of a product typically emerges within 3–4 weeks of reaching Stage 4. The 60-day timeline to a first paying client is documented from the ERTRS build — results will vary based on product complexity and the hours you invest.</p></div>
       </div>
 
       <div class="faq__item">
-        <div class="faq__q">Is $97 worth it? I can find this information free online.</div>
-        <div class="faq__a">
-          <p>You're right — information is everywhere. The problem isn't access to information. It's knowing which information matters, in what order, for your specific situation. That's what this guide provides. One good decision from it — one tool chosen correctly, one developer conversation handled well, one ad campaign built on a real framework — pays for it many times over. And if it doesn't, there's a 30-day full refund guarantee.</p>
-        </div>
+        <div class="faq__q">The system was built a month ago — is it still current?</div>
+        <div class="faq__a"><p>The architecture principles, prompt structures, and stage-by-stage decisions are durable — they're based on how production software is built, not on any platform's current UI. Specific account setup steps (URLs, interface locations) may shift with platform updates. Updated versions of the guide will be released as the system develops, and purchasers at this price will be notified.</p></div>
       </div>
 
       <div class="faq__item">
-        <div class="faq__q">How do I receive the guide?</div>
-        <div class="faq__a">
-          <p>Immediately after purchase, you'll receive an email with your download link. No waiting. No shipping. You'll have instant access within minutes of your order being confirmed — on any device.</p>
-        </div>
+        <div class="faq__q">What if it doesn't work for my specific product idea?</div>
+        <div class="faq__a"><p>The system has been applied to clinical SaaS, business intelligence, and property management — three different problem domains. The framework is product-agnostic at the architecture level. If you work through it genuinely and find it does not apply to your situation, contact us within 30 days for a full refund.</p></div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     PRICING
-=================================================================== -->
+<!-- PRICING -->
 <section class="pricing" id="pricing">
-  <div class="container">
-
-    <div class="pricing__header">
-      <span class="eyebrow eyebrow--teal eyebrow--pill">Get Instant Access</span>
-      <h2>One Payment. Everything Included.</h2>
-      <p>No subscriptions. No upsells. No drip-fed content. The complete system, immediately delivered.</p>
+  <div class="wrap">
+    <div class="pricing__h">
+      <span class="eyebrow" style="color:var(--teal);">Get the system</span>
+      <h2 style="color:var(--white);">One Payment. Instant Access.</h2>
+      <p>Price increases with each update. Current version: April 2026.</p>
     </div>
 
     <div class="price-card">
-      <div class="price-card__badge">🔥 Launch Offer — 40% Off Today</div>
-
-      <div class="price-card__label">Complete Guide</div>
-      <div class="price-card__name">The Non-Technical Founder's Guide</div>
-
-      <div class="price-card__was">Regular price: $157</div>
+      <div class="price-card__badge">🔥 Launch price — increases with next update</div>
+      <div class="price-card__label">Complete Bundle</div>
+      <div class="price-card__name">The Non-Technical Founder's Build System</div>
+      <div class="price-card__was">Planned price after update: $197</div>
       <div class="price-card__now"><sup>$</sup>97</div>
-      <div class="price-card__sub">One-time payment &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; All formats included</div>
-
+      <div class="price-card__period">One-time · Instant delivery · All formats</div>
       <ul class="price-card__list">
-        <li>The complete Non-Technical Founder's Guide (PDF + digital)</li>
-        <li>Market Intelligence Framework &amp; templates</li>
-        <li>30-Day Launch Calendar — one action per day</li>
-        <li>No-Code Tech Stack Decision Trees</li>
-        <li>Automation Blueprints (email, ads, lead capture, delivery)</li>
-        <li>Paid Ads Playbook — Google Search + TikTok frameworks</li>
-        <li>Metrics Scorecard &amp; KPI tracking templates</li>
-        <li><strong style="color:var(--teal);">BONUS:</strong> End-to-End Security Checklist — 10-section plain-English audit for founders with no IT team</li>
+        <li>The Non-Technical Founder's Build System — 8 stages</li>
+        <li>The Day Zero Setup Guide — 12 accounts, DNS, legal</li>
+        <li>The Prompt Database — 40+ tested prompts from real builds</li>
+        <li>BONUS: End-to-End Security Checklist — 72 checkboxes</li>
+        <li>Access to updated versions at the launch price</li>
         <li>30-day money-back guarantee — no questions asked</li>
       </ul>
-
-      <!--
-        CHECKOUT LINK: Replace href="#" with your actual Stripe payment link.
-        Example: href="https://buy.stripe.com/YOUR_PAYMENT_LINK"
-      -->
-      <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00" target="_blank" class="btn btn--primary btn--full btn--lg"
-         id="pricing-cta"
-         onclick="
-           gtag('event','begin_checkout',{currency:'USD',value:97,items:[{item_id:'ntfg-001',item_name:'Non-Technical Founders Guide',price:97,quantity:1}]});
-           gtag('event','conversion',{'send_to':'AW-18099530997','value':97.0,'currency':'USD'});
-           ttq.track('InitiateCheckout',{content_id:'ntfg-001',content_name:'Non-Technical Founders Guide',currency:'USD',value:97,quantity:1});
-         ">
+      <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00"
+         target="_blank"
+         class="cta cta--full cta--lg"
+         onclick="gtag('event','begin_checkout',{currency:'USD',value:97,items:[{item_id:'ntfbs-001',item_name:'Non-Technical Founders Build System',price:97,quantity:1}]});gtag('event','conversion',{'send_to':'AW-18099530997','value':97.0,'currency':'USD'});ttq.track('InitiateCheckout',{content_id:'ntfbs-001',content_name:'Build System',currency:'USD',value:97});">
         Get Instant Access — $97 →
       </a>
-
-      <p class="price-card__lock">🔒 Secure checkout via Stripe &nbsp;·&nbsp; 30-day money-back guarantee</p>
+      <p class="price-card__lock">🔒 Secure checkout via Stripe · 30-day money-back guarantee</p>
     </div>
-
   </div>
 </section>
 
-<!-- ===================================================================
-     GUARANTEE
-=================================================================== -->
+<!-- GUARANTEE -->
 <section class="guarantee">
-  <div class="container">
-    <div class="guarantee__inner">
+  <div class="wrap">
+    <div class="guarantee__in">
       <div class="guarantee__badge">
         <span class="guarantee__days">30</span>
-        <span class="guarantee__label">Day Money<br>Back Guarantee</span>
+        <span class="guarantee__lbl">Day Money<br>Back Guarantee</span>
       </div>
       <div class="guarantee__text">
-        <h3>You Either Get Results, or You Get Your Money Back</h3>
-        <p>
-          Go through the entire guide. Apply the frameworks. Follow the 30-day calendar. If after 30 days you don't believe this was worth every penny, email us and we'll issue a full refund — no questions asked, no forms to complete, no awkward calls. The risk is entirely ours.
-        </p>
+        <h3>Work Through It. If It Doesn't Deliver, Neither Do We.</h3>
+        <p>Go through every stage. Apply the system. If after 30 days you do not believe this was worth the price, email us for a full refund. No forms. No calls. No questions. The risk is ours.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================================================================
-     LEAD MAGNET
-=================================================================== -->
-<section class="lead-magnet">
-  <div class="container">
-    <div class="lead-magnet__box">
-
-      <span class="eyebrow eyebrow--teal eyebrow--pill">Free Resource</span>
-      <h2>Not Ready to Buy? Start Here.</h2>
-      <p>
-        Get the <strong>Non-Technical Founder's Quick-Start Checklist</strong> — the 12 decisions every founder must make before spending a dollar on tech or marketing. Free. No fluff. Instant delivery.
-      </p>
-
-      <!-- MailerLite Embedded Form — Free Checklist Signup -->
-      <div class="ml-embedded" data-form="ry3abS"></div>
-      <p class="ml-form__privacy" style="margin-top:12px;">No spam. One email with your download. Unsubscribe anytime.</p>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===================================================================
-     FINAL CTA
-=================================================================== -->
-<section class="final-cta">
-  <div class="container">
-    <span class="eyebrow eyebrow--teal">The decision</span>
-    <h2>Your competitors aren't more talented. They just have a better system.</h2>
-    <div class="divider divider--center"></div>
-    <p>The founders who build fast, build lean, and build profitably aren't geniuses. They follow a proven framework. This is that framework.</p>
-    <a href="#pricing" class="btn btn--primary btn--lg"
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow">Last chance at this price</span>
+    <h2>The system exists. The products are live. The only question is whether you use it.</h2>
+    <div class="divider divider--c"></div>
+    <p class="final__sub">Three SaaS products. Two enterprise clients. Sixty days. $48/month. The system that produced those numbers is documented in full and available now for $97.</p>
+    <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00"
+       target="_blank"
+       class="cta cta--lg"
        onclick="gtag('event','click',{event_category:'cta',event_label:'final_cta'});">
-      Get the Guide for $97 →
+      Get the Build System — $97 →
     </a>
-    <p class="final-cta__note">30-day money-back guarantee &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; One-time payment</p>
+    <p class="final__note">30-day guarantee · Instant access · Price increases with next update</p>
   </div>
 </section>
 
-<!-- ===================================================================
-     FOOTER
-=================================================================== -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <span class="footer__logo">The <span>Non-Technical</span> Founder</span>
-    <p>© 2026 The Non-Technical Founder. All rights reserved.</p>
-    <p>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Contact</a>
-    </p>
-    <p class="footer__disclaimer">
-      Results described are from real customers. Individual results will vary based on effort, market conditions, and application of the frameworks provided. This guide is for educational purposes and does not constitute financial or legal advice.
-    </p>
-  </div>
+  <span class="footer__logo"><span>Mudrost</span> Systems</span>
+  <p>© 2026 ERTRS Inc. | Mudrost Systems. All rights reserved.</p>
+  <p>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Contact</a>
+  </p>
+  <p class="footer__disc">
+    Results referenced are from the documented ERTRS Inc. build history. Individual outcomes vary based on product complexity, effort, and market conditions. Claude Pro subscription ($20/month) required to execute the Build System.
+  </p>
 </footer>
 
-<!-- ===================================================================
-     STICKY CTA BAR (mobile only)
-=================================================================== -->
-<div class="sticky-bar" id="sticky-bar">
-  <span class="sticky-bar__text">🔥 Launch offer — 40% off</span>
-  <a href="#pricing" class="btn btn--primary"
-     onclick="gtag('event','click',{event_category:'cta',event_label:'sticky_bar'});">
+<!-- STICKY BAR -->
+<div class="sticky" id="sticky">
+  <span class="sticky__txt">🔥 Launch price — increases with next update</span>
+  <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00" target="_blank" class="cta"
+     onclick="gtag('event','click',{event_category:'cta',event_label:'sticky'});">
     Get Access — $97
   </a>
 </div>
 
-<!-- ===================================================================
-     JAVASCRIPT
-=================================================================== -->
 <script>
-  /* ---------------------------------------------------------------
-     FAQ accordion
-  --------------------------------------------------------------- */
-  document.querySelectorAll('.faq__q').forEach(function(q) {
-    q.addEventListener('click', function() {
-      var item = this.parentElement;
-      var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq__item').forEach(function(i){ i.classList.remove('open'); });
-      if (!wasOpen) item.classList.add('open');
+  /* FAQ */
+  document.querySelectorAll('.faq__q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var item=this.parentElement, open=item.classList.contains('open');
+      document.querySelectorAll('.faq__item').forEach(function(i){i.classList.remove('open');});
+      if(!open) item.classList.add('open');
     });
   });
 
-  /* ---------------------------------------------------------------
-     Sticky bar — show after user scrolls past hero
-  --------------------------------------------------------------- */
-  var hero    = document.querySelector('.hero');
-  var stickyBar = document.getElementById('sticky-bar');
-
-  if (hero && stickyBar) {
-    var obs = new IntersectionObserver(function(entries) {
-      stickyBar.style.display = entries[0].isIntersecting ? 'none' : 'flex';
-    }, { threshold: 0.1 });
-    obs.observe(hero);
+  /* Sticky bar after hero */
+  var hero=document.querySelector('.hero'), sticky=document.getElementById('sticky');
+  if(hero&&sticky){
+    new IntersectionObserver(function(e){
+      sticky.style.display=e[0].isIntersecting?'none':'flex';
+    },{threshold:0.1}).observe(hero);
   }
 
-  /* ---------------------------------------------------------------
-     Scroll-depth tracking (GA4)
-  --------------------------------------------------------------- */
-  var depthsToTrack = [25, 50, 75, 90];
-  var depthsTracked = [];
-  window.addEventListener('scroll', function() {
-    var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-    depthsToTrack.forEach(function(d) {
-      if (pct >= d && depthsTracked.indexOf(d) === -1) {
-        depthsTracked.push(d);
-        gtag('event', 'scroll_depth', { depth: d + '%' });
-      }
+  /* Scroll depth */
+  var depths=[25,50,75,90],tracked=[];
+  window.addEventListener('scroll',function(){
+    var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
+    depths.forEach(function(d){
+      if(p>=d&&tracked.indexOf(d)===-1){tracked.push(d);gtag('event','scroll_depth',{depth:d+'%'});}
     });
-  });
-
-  /* ---------------------------------------------------------------
-     Lead magnet form handler
-     (Placeholder — replace with MailerLite's own JS after embedding)
-  --------------------------------------------------------------- */
-  function handleLeadSubmit(btn) {
-    var name  = document.getElementById('lead-name').value.trim();
-    var email = document.getElementById('lead-email').value.trim();
-
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-
-    /* Fire tracking */
-    gtag('event', 'generate_lead', { currency: 'USD', value: 0, event_category: 'lead_magnet', event_label: 'checklist_optin' });
-    ttq.track('SubmitForm', { content_name: 'Free Checklist Optin', email: email });
-
-    /* Visual feedback */
-    btn.textContent = '✓ Check your inbox!';
-    btn.style.background = 'var(--green)';
-    btn.style.boxShadow  = 'none';
-    btn.disabled = true;
-  }
-
-  /* ---------------------------------------------------------------
-     CTA purchase tracking — fires on checkout click
-  --------------------------------------------------------------- */
-  document.getElementById('pricing-cta').addEventListener('click', function() {
-    gtag('event', 'purchase_intent', { currency: 'USD', value: 97, event_label: 'pricing_cta' });
   });
 </script>
-
 </body>
 </html>

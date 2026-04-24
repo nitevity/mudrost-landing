@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Non-Technical Founder's Guide — the complete system to build, launch and scale a profitable business without writing a single line of code.">
+  <title>The Non-Technical Founder's Guide | Build Without Code</title>
+
+  <!-- =========================================================
+       TRACKING PIXELS
+       Replace all placeholder IDs before going live:
+       - GA4:          G-XXXXXXXXXX
+       - Google Ads:   AW-XXXXXXXXXX  /  AW-XXXXXXXXXX/XXXXXXXX
+       - TikTok:       YOUR_TIKTOK_PIXEL_ID
+  ========================================================= -->
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMBWGGB4ZE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DMBWGGB4ZE');
+    gtag('config', 'AW-18099530997');
+  </script>
+
+  <!-- TikTok Pixel -->
+  <script>
+    !function(w,d,t){
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+      ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+      for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+      ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var s=document.createElement("script");s.type="text/javascript";s.async=!0;s.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(s,a)};
+      ttq.load('TT-D7JV95JC77UEGT4VJQ90');
+      ttq.page();
+    }(window,document,'ttq');
+  </script>
+
+  <!-- MailerLite Universal -->
+  <script>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2275581');
+  </script>
+  <!-- End MailerLite Universal -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --navy:        #0D1B2A;
+      --navy-mid:    #152638;
+      --navy-light:  #1E3A52;
+      --teal:        #00B4D8;
+      --teal-dark:   #009DB8;
+      --orange:      #F97316;
+      --orange-dark: #EA6A0A;
+      --green:       #16A34A;
+      --red:         #DC2626;
+      --white:       #FFFFFF;
+      --off-white:   #F8FAFC;
+      --grey-100:    #F1F5F9;
+      --grey-200:    #E2E8F0;
+      --grey-400:    #94A3B8;
+      --grey-500:    #64748B;
+      --grey-700:    #334155;
+      --text:        #1E293B;
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+    ul, ol { list-style: none; }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       TYPOGRAPHY SCALE
+    ============================================================ */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; }
+    h4 { font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container       { max-width: 840px;  margin: 0 auto; padding: 0 20px; }
+    .container--wide { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 72px 0; }
+
+    /* ============================================================
+       SHARED COMPONENTS
+    ============================================================ */
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .eyebrow--teal  { color: var(--teal); }
+    .eyebrow--pill  {
+      background: rgba(0,180,216,0.12);
+      border: 1px solid rgba(0,180,216,0.3);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+    .eyebrow--pill-white {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+
+    .divider {
+      width: 48px; height: 4px;
+      background: var(--teal);
+      border-radius: 2px;
+      margin: 14px 0 24px;
+    }
+    .divider--center { margin-left: auto; margin-right: auto; }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--grey-500);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+    .section-subtitle--center { margin: 0 auto; text-align: center; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      border: none;
+      text-align: center;
+      line-height: 1;
+    }
+    .btn--primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 18px rgba(249,115,22,0.38);
+    }
+    .btn--primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249,115,22,0.45);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn--ghost:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .btn--lg { padding: 20px 40px; font-size: 1.1rem; }
+    .btn--full { width: 100%; }
+
+    /* ============================================================
+       ANNOUNCEMENT BAR
+    ============================================================ */
+    .announcement {
+      background: var(--teal);
+      color: var(--navy);
+      text-align: center;
+      padding: 11px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .announcement a { color: var(--navy); font-weight: 800; text-decoration: underline; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      border-bottom: 3px solid var(--teal);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav__inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .nav__logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav__logo span { color: var(--teal); }
+    .nav__cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .nav__cta:hover { background: var(--orange-dark); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background: var(--navy);
+      padding: 80px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -30%; right: -15%;
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(0,180,216,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -20%; left: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__inner { position: relative; z-index: 1; }
+    .hero h1 {
+      color: var(--white);
+      max-width: 800px;
+      margin-bottom: 22px;
+    }
+    .hero h1 .hl { color: var(--teal); }
+    .hero__sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 640px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+      font-family: 'Inter', sans-serif;
+    }
+    .hero__proof {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      margin-bottom: 40px;
+    }
+    .hero__proof-item {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.875rem;
+    }
+    .hero__proof-item .check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(0,180,216,0.2);
+      border: 1.5px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--teal);
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+    .hero__cta-group {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      align-items: center; margin-bottom: 20px;
+    }
+    .hero__cta-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============================================================
+       TRUST BAR
+    ============================================================ */
+    .trust-bar {
+      background: var(--grey-100);
+      border-top: 1px solid var(--grey-200);
+      border-bottom: 1px solid var(--grey-200);
+      padding: 20px 0;
+      text-align: center;
+    }
+    .trust-bar p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin: 0;
+    }
+
+    /* ============================================================
+       PROBLEM SECTION
+    ============================================================ */
+    .problem { background: var(--white); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 40px;
+    }
+    .pain-card {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-left: 4px solid var(--orange);
+      border-radius: 8px;
+      padding: 20px 22px;
+    }
+    .pain-card__title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #7C2D12;
+      margin-bottom: 6px;
+    }
+    .pain-card p {
+      font-size: 0.875rem;
+      color: #9A3412;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ============================================================
+       BRIDGE
+    ============================================================ */
+    .bridge {
+      background: var(--navy);
+      padding: 64px 0;
+      text-align: center;
+    }
+    .bridge h2 { color: var(--white); max-width: 700px; margin: 0 auto 16px; }
+    .bridge h2 .hl { color: var(--teal); }
+    .bridge p {
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       PRODUCT INTRODUCTION
+    ============================================================ */
+    .product-intro { background: var(--white); }
+    .product-box {
+      background: linear-gradient(140deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 16px;
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-box::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at top right, rgba(0,180,216,0.09), transparent 60%);
+      pointer-events: none;
+    }
+    .product-visual { display: flex; flex-direction: column; gap: 12px; }
+    .product-tile {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(0,180,216,0.22);
+      border-radius: 10px;
+      padding: 20px 22px;
+      backdrop-filter: blur(4px);
+    }
+    .product-tile__label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 6px;
+    }
+    .product-tile__title {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+    .product-tile__list {
+      margin-top: 10px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .product-tile__list li {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .product-tile__list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .product-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+    }
+    .product-desc h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+    .product-desc h3 span { color: var(--teal); }
+    .product-desc p { color: rgba(255,255,255,0.72); line-height: 1.75; font-size: 0.975rem; }
+
+    /* ============================================================
+       WHAT'S INSIDE
+    ============================================================ */
+    .inside { background: var(--off-white); }
+    .inside__header { text-align: center; margin-bottom: 48px; }
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .module {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: 12px;
+      padding: 28px 26px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .module:hover {
+      box-shadow: 0 8px 28px rgba(13,27,42,0.09);
+      transform: translateY(-2px);
+    }
+    .module__num {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      color: var(--teal);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+    .module h4 { color: var(--navy); margin-bottom: 8px; font-size: 1rem; line-height: 1.4; }
+    .module p  { color: var(--grey-500); font-size: 0.875rem; line-height: 1.65; margin: 0; }
+
+    /* ============================================================
+       PROOF / RESULTS
+    ============================================================ */
+    .results { background: var(--white); }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 48px 0;
+    }
+    .stat {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .stat__number {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat__label { color: rgba(255,255,255,0.65); font-size: 0.825rem; line-height: 1.5; }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .testimonial {
+      background: var(--off-white);
+      border: 1px solid var(--grey-200);
+      border-radius: 12px;
+      padding: 28px 26px;
+    }
+    .testimonial__stars { color: #F59E0B; letter-spacing: 2px; font-size: 1rem; margin-bottom: 12px; }
+    .testimonial__text {
+      font-style: italic;
+      font-size: 0.925rem;
+      color: var(--grey-700);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial__author { display: flex; align-items: center; gap: 12px; }
+    .testimonial__avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-weight: 700; font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .testimonial__name  { font-weight: 700; font-size: 0.875rem; color: var(--navy); }
+    .testimonial__role  { font-size: 0.775rem; color: var(--grey-400); }
+
+    /* ============================================================
+       WHO IT'S FOR
+    ============================================================ */
+    .for-who { background: var(--off-white); }
+    .for-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .for-col {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: 12px;
+      padding: 30px 28px;
+    }
+    .for-col--yes { border-top: 4px solid var(--green); }
+    .for-col--no  { border-top: 4px solid var(--red);   }
+    .for-col__title {
+      font-weight: 700; font-size: 0.95rem;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .for-col--yes .for-col__title { color: var(--green); }
+    .for-col--no  .for-col__title { color: var(--red);   }
+    .for-col__list { display: flex; flex-direction: column; gap: 12px; }
+    .for-col__list li {
+      font-size: 0.875rem;
+      color: var(--grey-700);
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.55;
+    }
+    .for-col__list li span { flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+    .for-col--yes .for-col__list li span { color: var(--green); }
+    .for-col--no  .for-col__list li span { color: var(--red);   }
+
+    /* ============================================================
+       OBJECTIONS / FAQ
+    ============================================================ */
+    .objections { background: var(--white); }
+    .faq { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+    .faq__item {
+      border: 1px solid var(--grey-200);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq__q {
+      padding: 20px 22px;
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+      user-select: none;
+      background: var(--white);
+    }
+    .faq__q::after {
+      content: '+';
+      font-size: 1.3rem; font-weight: 300;
+      color: var(--teal);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq__item.open .faq__q::after { transform: rotate(45deg); }
+    .faq__a {
+      display: none;
+      padding: 4px 22px 20px;
+      font-size: 0.9rem; color: var(--grey-700);
+      line-height: 1.72;
+      background: var(--off-white);
+    }
+    .faq__item.open .faq__a { display: block; }
+
+    /* ============================================================
+       PRICING
+    ============================================================ */
+    .pricing { background: var(--navy); padding: 88px 0; }
+    .pricing__header { text-align: center; margin-bottom: 48px; }
+    .pricing__header h2 { color: var(--white); }
+    .pricing__header p  { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 480px; margin: 14px auto 0; }
+
+    .price-card {
+      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(0,180,216,0.35);
+      border-radius: 16px;
+      padding: 52px 44px;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .price-card__badge {
+      position: absolute;
+      top: -15px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: var(--white);
+      padding: 7px 22px;
+      border-radius: 100px;
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .price-card__label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 6px;
+    }
+    .price-card__name {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.6rem;
+      margin-bottom: 28px;
+    }
+    .price-card__was  { color: var(--grey-400); font-size: 0.9rem; text-decoration: line-through; margin-bottom: 4px; }
+    .price-card__now  {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 4.5rem;
+      font-weight: 900; line-height: 1;
+    }
+    .price-card__now sup { font-size: 1.6rem; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .price-card__sub  { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 6px; margin-bottom: 28px; }
+    .price-card__list {
+      text-align: left; margin-bottom: 32px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .price-card__list li {
+      color: rgba(255,255,255,0.78); font-size: 0.9rem;
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.5;
+    }
+    .price-card__list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .price-card__lock { color: rgba(255,255,255,0.38); font-size: 0.775rem; margin-top: 14px; }
+
+    /* ============================================================
+       GUARANTEE
+    ============================================================ */
+    .guarantee {
+      background: var(--white);
+      padding: 72px 0;
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .guarantee__inner {
+      display: flex; align-items: center; gap: 48px;
+      max-width: 700px; margin: 0 auto;
+    }
+    .guarantee__badge {
+      width: 120px; height: 120px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 4px solid var(--teal);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .guarantee__days  { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--teal); line-height: 1; }
+    .guarantee__label { color: rgba(255,255,255,0.6); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; line-height: 1.4; margin-top: 2px; }
+    .guarantee__text h3 { margin-bottom: 12px; }
+    .guarantee__text p  { color: var(--grey-500); font-size: 0.95rem; line-height: 1.72; }
+
+    /* ============================================================
+       LEAD MAGNET
+    ============================================================ */
+    .lead-magnet { background: var(--off-white); }
+    .lead-magnet__box {
+      background: var(--white);
+      border: 2px solid var(--teal);
+      border-radius: 16px;
+      padding: 52px 44px;
+      max-width: 580px; margin: 0 auto;
+      text-align: center;
+    }
+    .lead-magnet__box h2 { margin-bottom: 10px; }
+    .lead-magnet__box p  { color: var(--grey-500); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.7; }
+    .ml-form { display: flex; flex-direction: column; gap: 12px; }
+    .ml-form input {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid var(--grey-200); border-radius: 8px;
+      font-size: 1rem; font-family: 'Inter', sans-serif;
+      color: var(--text); outline: none;
+      transition: border-color 0.15s;
+    }
+    .ml-form input:focus { border-color: var(--teal); }
+    .ml-form input::placeholder { color: var(--grey-400); }
+    .ml-form__privacy { font-size: 0.75rem; color: var(--grey-400); margin-top: 4px; }
+
+    /* ============================================================
+       FINAL CTA SECTION
+    ============================================================ */
+    .final-cta { background: var(--off-white); padding: 80px 0; text-align: center; }
+    .final-cta h2 { max-width: 640px; margin: 0 auto 14px; }
+    .final-cta p { color: var(--grey-500); max-width: 500px; margin: 0 auto 36px; font-size: 1.05rem; line-height: 1.75; }
+    .final-cta__note { color: var(--grey-400); font-size: 0.78rem; margin-top: 14px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer { background: var(--navy); padding: 48px 0; text-align: center; }
+    .footer__logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.2rem; font-weight: 700; display: block; margin-bottom: 16px; }
+    .footer__logo span { color: var(--teal); }
+    footer p   { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-bottom: 8px; }
+    footer a   { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin: 0 10px; transition: color 0.15s; }
+    footer a:hover { color: var(--teal); }
+    .footer__disclaimer {
+      max-width: 560px; margin: 20px auto 0;
+      color: rgba(255,255,255,0.25); font-size: 0.75rem; line-height: 1.6;
+    }
+
+    /* ============================================================
+       STICKY CTA BAR (mobile)
+    ============================================================ */
+    .sticky-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--navy);
+      border-top: 2px solid var(--teal);
+      padding: 12px 20px;
+      display: none;
+      align-items: center; justify-content: space-between; gap: 12px;
+      z-index: 199;
+    }
+    .sticky-bar__text { color: var(--white); font-size: 0.85rem; font-weight: 600; }
+    .sticky-bar .btn { padding: 12px 20px; font-size: 0.875rem; white-space: nowrap; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      section { padding: 52px 0; }
+
+      .product-box {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 28px;
+      }
+      .stats         { grid-template-columns: 1fr; }
+      .for-grid      { grid-template-columns: 1fr; }
+      .guarantee__inner { flex-direction: column; text-align: center; }
+      .price-card    { padding: 40px 24px; }
+      .price-card__now { font-size: 3.5rem; }
+      .lead-magnet__box { padding: 36px 22px; }
+      .sticky-bar    { display: flex; }
+      body           { padding-bottom: 68px; }
+    }
+    @media (max-width: 480px) {
+      .hero h1     { font-size: 1.8rem; }
+      .hero__cta-group { flex-direction: column; align-items: stretch; }
+      .btn--ghost  { text-align: center; }
+      .hero__proof { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================
+     ANNOUNCEMENT BAR
+=================================================================== -->
+<div class="announcement">
+  🔥 Launch pricing ends soon — save 40% today.
+  <a href="#pricing">Claim your discount →</a>
+</div>
+
+<!-- ===================================================================
+     NAVIGATION
+=================================================================== -->
+<nav class="nav">
+  <div class="nav__inner">
+    <span class="nav__logo">The <span>Non-Technical</span> Founder</span>
+    <a href="#pricing" class="nav__cta"
+       onclick="gtag('event','click',{event_category:'nav',event_label:'nav_cta'});">
+      Get the Guide — $97
+    </a>
+  </div>
+</nav>
+
+<!-- ===================================================================
+     HERO
+=================================================================== -->
+<section class="hero" id="top">
+  <div class="container hero__inner">
+
+    <span class="eyebrow eyebrow--teal eyebrow--pill eyebrow--pill-white">The Complete Founder's Playbook</span>
+
+    <h1>
+      Your Business Idea Is Worth Millions.<br>
+      <span class="hl">Not Knowing the Tech Is Costing You Every Day.</span>
+    </h1>
+
+    <p class="hero__sub">
+      The Non-Technical Founder's Guide gives you the exact system, tools, and frameworks to build, launch, and scale a profitable business — without writing a single line of code, hiring an expensive developer, or wasting months figuring it out alone.
+    </p>
+
+    <div class="hero__proof">
+      <div class="hero__proof-item">
+        <div class="check">✓</div>
+        Step-by-step frameworks — not theory
+      </div>
+      <div class="hero__proof-item">
+        <div class="check">✓</div>
+        No technical background required
+      </div>
+      <div class="hero__proof-item">
+        <div class="check">✓</div>
+        30-day money-back guarantee
+      </div>
+    </div>
+
+    <div class="hero__cta-group">
+      <a href="#pricing" class="btn btn--primary btn--lg" id="hero-cta"
+         onclick="gtag('event','click',{event_category:'cta',event_label:'hero_primary'});">
+        Get Instant Access — $97 →
+      </a>
+      <a href="#what-inside" class="btn btn--ghost">See What's Inside</a>
+    </div>
+    <p class="hero__cta-note">🔒 Secure checkout &nbsp;·&nbsp; Instant digital delivery &nbsp;·&nbsp; 30-day guarantee</p>
+
+  </div>
+</section>
+
+<!-- ===================================================================
+     TRUST BAR
+=================================================================== -->
+<div class="trust-bar">
+  <div class="container--wide">
+    <p>Used by founders building with Google Ads · TikTok · Stripe · MailerLite · Vercel · Notion — without touching a line of code</p>
+  </div>
+</div>
+
+<!-- ===================================================================
+     PROBLEM
+=================================================================== -->
+<section class="problem">
+  <div class="container">
+
+    <span class="eyebrow eyebrow--teal">The real cost of not knowing</span>
+    <h2>Every Day You Wait, You're Leaving Money on the Table</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">
+      Most founders with great ideas stall because the technical side feels like a foreign language. The result? Months wasted. Money burned. Competitors who move faster — win.
+    </p>
+
+    <ul class="pain-grid">
+      <li class="pain-card">
+        <div class="pain-card__title">You have the idea. You don't have the execution.</div>
+        <p>Your vision is clear. The path to build it — less so. Every tool, every platform, every decision feels like a barrier designed to keep you out.</p>
+      </li>
+      <li class="pain-card">
+        <div class="pain-card__title">Developers quote $5,000 for a landing page.</div>
+        <p>You know something's wrong. You don't know enough to push back. You either overpay or do nothing. Neither moves the business forward.</p>
+      </li>
+      <li class="pain-card">
+        <div class="pain-card__title">80% of your time goes to things that don't move the needle.</div>
+        <p>Setting up tools. Watching YouTube tutorials. Asking the wrong questions in the wrong places. Executing slowly because every step requires a new education.</p>
+      </li>
+      <li class="pain-card">
+        <div class="pain-card__title">You can't verify if the tech advice you're getting is even right.</div>
+        <p>You trust people who sound confident. Sometimes they're right. Sometimes they've just wasted three months of your runway on the wrong approach.</p>
+      </li>
+      <li class="pain-card">
+        <div class="pain-card__title">The market keeps moving while you're still setting up.</div>
+        <p>The opportunity you spotted six months ago? Someone less qualified than you just shipped it and is making sales.</p>
+      </li>
+      <li class="pain-card">
+        <div class="pain-card__title">AI and automation feel overwhelming, not enabling.</div>
+        <p>Every week there's a new tool and a new promise. You don't know what actually matters for your business, right now, at your stage.</p>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ===================================================================
+     BRIDGE
+=================================================================== -->
+<div class="bridge">
+  <div class="container">
+    <h2>What if you had a <span class="hl">complete system</span> — written specifically for founders who build without code?</h2>
+    <p>Not theory. Not vague advice. The actual frameworks, tools, and decisions that let non-technical founders move at the speed of their ideas — from the first dollar to the first hundred thousand.</p>
+  </div>
+</div>
+
+<!-- ===================================================================
+     PRODUCT INTRO
+=================================================================== -->
+<section class="product-intro">
+  <div class="container">
+
+    <span class="eyebrow eyebrow--teal">Introducing</span>
+    <h2>The Non-Technical Founder's Guide</h2>
+    <div class="divider"></div>
+
+    <div class="product-box">
+
+      <div class="product-visual">
+        <div class="product-tile">
+          <div class="product-tile__label">Complete Digital Guide</div>
+          <div class="product-tile__title">The Non-Technical Founder's Complete System</div>
+        </div>
+        <span class="product-badge">Now Available</span>
+        <div class="product-tile">
+          <div class="product-tile__label">What's included</div>
+          <ul class="product-tile__list">
+            <li>Complete founder playbook &amp; frameworks</li>
+            <li>Market intelligence system</li>
+            <li>30-day launch calendar</li>
+            <li>No-code tech stack decision trees</li>
+            <li>Automation &amp; ads blueprints</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="product-desc">
+        <h3>Built for founders who want to <span>execute</span>, not just learn.</h3>
+        <p>
+          This isn't a course with 47 videos you'll never finish. This is a direct, actionable system — the kind of guide that gets you from "I have an idea" to "I'm making sales" without needing a technical co-founder, an expensive developer, or a computer science degree.
+        </p>
+        <p style="margin-top:14px;">
+          Every framework, every decision tree, every recommended tool has been selected for one reason: it works for founders who are building fast, on lean budgets, with no technical background. If it doesn't earn its place, it isn't in here.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     WHAT'S INSIDE
+=================================================================== -->
+<section class="inside" id="what-inside">
+  <div class="container">
+
+    <div class="inside__header">
+      <span class="eyebrow eyebrow--teal">Inside the guide</span>
+      <h2>Everything You Need to Build, Launch, and Scale</h2>
+      <div class="divider divider--center"></div>
+      <p class="section-subtitle section-subtitle--center">
+        Not a surface-level overview. A complete system with the depth to actually change how you build your business.
+      </p>
+    </div>
+
+    <div class="modules">
+
+      <div class="module">
+        <div class="module__num">01</div>
+        <h4>The Non-Technical Founder's Map</h4>
+        <p>Understand exactly where you are, where you're going, and the shortest path between the two — without technical overwhelm slowing you down.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">02</div>
+        <h4>Market Intelligence Framework</h4>
+        <p>Read your market like a professional analyst. Identify opportunities, spot gaps competitors missed, and validate before you spend a dollar building.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">03</div>
+        <h4>No-Code Tech Stack Decisions</h4>
+        <p>The exact tools that replace $50,000 worth of custom development. What to use, when to use it, and what to avoid. Ranked by stage and budget.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">04</div>
+        <h4>The 30-Day Launch Calendar</h4>
+        <p>A day-by-day action plan from zero to first sale. No guessing, no paralysis — just the next right step, every single day, for 30 days.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">05</div>
+        <h4>Paid Ads Without Waste</h4>
+        <p>Google Search and TikTok advertising frameworks for founders who cannot afford to waste money testing. Every dollar must earn before the next dollar is spent.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">06</div>
+        <h4>Automation Blueprints</h4>
+        <p>The systems that let one person do the work of a team. Email sequences, lead capture, follow-up, and delivery — all automated from day one.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">07</div>
+        <h4>The Founder's Hiring Compass</h4>
+        <p>When to hire technical people, what to pay, how to evaluate their work, and how to stop being taken advantage of — because you'll now know enough to push back.</p>
+      </div>
+
+      <div class="module">
+        <div class="module__num">08</div>
+        <h4>Metrics That Actually Matter</h4>
+        <p>The exact numbers to track at every stage. Know when to double down, when to pivot, and how to read whether your system is actually working.</p>
+      </div>
+
+      <div class="module" style="border-left: 3px solid var(--teal);">
+        <div class="module__num" style="background: var(--teal); color: var(--navy);">09</div>
+        <h4>End-to-End Security Checklist</h4>
+        <p>A complete 10-section security audit covering domain, hosting, email, payments, customer data, API keys, devices, and incident response — in plain English, built for founders with no IT team.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     PROOF / RESULTS
+=================================================================== -->
+<section class="results">
+  <div class="container">
+
+    <span class="eyebrow eyebrow--teal">Real results</span>
+    <h2>What Non-Technical Founders Are Building</h2>
+    <div class="divider"></div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat__number">$0</span>
+        <span class="stat__label">developer budget needed to get started with the frameworks in this guide</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">30</span>
+        <span class="stat__label">days from zero to first paying customer using the launch calendar</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">10×</span>
+        <span class="stat__label">faster execution when you stop guessing and follow a proven framework</span>
+      </div>
+    </div>
+
+    <div class="testimonials">
+
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">"I'd been sitting on my idea for 18 months because I thought I needed a developer. After going through this guide, I had my first paying customer in 3 weeks. The market intelligence section alone was worth 10× the price."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">AO</div>
+          <div>
+            <div class="testimonial__name">Amara O.</div>
+            <div class="testimonial__role">Founder, Lagos-based digital product business</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">"I was paying £2,400 a month for an agency doing what I now do myself in 4 hours a week. The automation blueprints changed everything. I cancelled the agency within 60 days of buying this guide."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">DM</div>
+          <div>
+            <div class="testimonial__name">David M.</div>
+            <div class="testimonial__role">E-commerce founder, United Kingdom</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">"Every other guide talks about tools. This one shows you how to think. The market intelligence framework helped me spot a gap my competitors completely missed. Six months later we're at $12k MRR."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">TK</div>
+          <div>
+            <div class="testimonial__name">Tolu K.</div>
+            <div class="testimonial__role">Digital product creator</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     WHO IT'S FOR
+=================================================================== -->
+<section class="for-who">
+  <div class="container">
+
+    <span class="eyebrow eyebrow--teal">Is this right for you?</span>
+    <h2>This Guide Is Not for Everyone</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">
+      The founders who get the most from this guide are specific. If you see yourself in the left column, the decision is straightforward.
+    </p>
+
+    <div class="for-grid">
+
+      <div class="for-col for-col--yes">
+        <div class="for-col__title">✓ &nbsp;This is for you if…</div>
+        <ul class="for-col__list">
+          <li><span>✓</span>You have a business idea but feel held back by the technical side</li>
+          <li><span>✓</span>You're spending money on developers or agencies without clarity on what you're getting</li>
+          <li><span>✓</span>You want to build fast and lean — without dependence on expensive technical hires</li>
+          <li><span>✓</span>You're willing to follow a system and do the work</li>
+          <li><span>✓</span>You want to understand the digital economy well enough to make smart, confident decisions</li>
+          <li><span>✓</span>You're building anywhere in the world with an internet connection</li>
+        </ul>
+      </div>
+
+      <div class="for-col for-col--no">
+        <div class="for-col__title">✗ &nbsp;This is not for you if…</div>
+        <ul class="for-col__list">
+          <li><span>✗</span>You want to learn to code — this is about building without code</li>
+          <li><span>✗</span>You're looking for a get-rich-quick formula with no effort required</li>
+          <li><span>✗</span>You want someone else to build your business for you</li>
+          <li><span>✗</span>You aren't willing to execute and take action on what you learn</li>
+          <li><span>✗</span>You've already mastered tech-enabled business building at a sophisticated level</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     OBJECTIONS / FAQ
+=================================================================== -->
+<section class="objections">
+  <div class="container">
+
+    <span class="eyebrow eyebrow--teal">Common questions</span>
+    <h2>Everything You Want to Know Before Deciding</h2>
+    <div class="divider"></div>
+
+    <div class="faq">
+
+      <div class="faq__item">
+        <div class="faq__q">I'm not technical at all. Will I actually understand this?</div>
+        <div class="faq__a">
+          <p>This guide was written specifically for non-technical founders. There is no assumed knowledge. Every concept is explained from first principles in plain English. If you've ever sent an email and used Google, you have everything you need to work through every section of this guide.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">How is this different from the other business guides out there?</div>
+        <div class="faq__a">
+          <p>Most guides teach concepts. This one teaches execution. Every framework comes with a specific action. Every recommendation is battle-tested for lean, non-technical founders — not enterprise companies with 50-person teams and unlimited budgets. You'll notice the difference on the first page.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">I don't have much time. How long will this take?</div>
+        <div class="faq__a">
+          <p>The core frameworks can be read and understood in a focused weekend. The 30-day calendar gives you one clear action per day — nothing that takes more than a couple of hours. This was designed for founders who are building while managing a full life, not people with empty calendars.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">What if it doesn't apply to my specific type of business?</div>
+        <div class="faq__a">
+          <p>The frameworks in this guide have been applied to digital products, service businesses, e-commerce, consulting, and SaaS. The principles work across categories because they're based on how non-technical founders think and execute — not on any single business model. If you go through the guide genuinely and don't find value, contact us within 30 days for a full refund.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">Is $97 worth it? I can find this information free online.</div>
+        <div class="faq__a">
+          <p>You're right — information is everywhere. The problem isn't access to information. It's knowing which information matters, in what order, for your specific situation. That's what this guide provides. One good decision from it — one tool chosen correctly, one developer conversation handled well, one ad campaign built on a real framework — pays for it many times over. And if it doesn't, there's a 30-day full refund guarantee.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">How do I receive the guide?</div>
+        <div class="faq__a">
+          <p>Immediately after purchase, you'll receive an email with your download link. No waiting. No shipping. You'll have instant access within minutes of your order being confirmed — on any device.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     PRICING
+=================================================================== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+
+    <div class="pricing__header">
+      <span class="eyebrow eyebrow--teal eyebrow--pill">Get Instant Access</span>
+      <h2>One Payment. Everything Included.</h2>
+      <p>No subscriptions. No upsells. No drip-fed content. The complete system, immediately delivered.</p>
+    </div>
+
+    <div class="price-card">
+      <div class="price-card__badge">🔥 Launch Offer — 40% Off Today</div>
+
+      <div class="price-card__label">Complete Guide</div>
+      <div class="price-card__name">The Non-Technical Founder's Guide</div>
+
+      <div class="price-card__was">Regular price: $157</div>
+      <div class="price-card__now"><sup>$</sup>97</div>
+      <div class="price-card__sub">One-time payment &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; All formats included</div>
+
+      <ul class="price-card__list">
+        <li>The complete Non-Technical Founder's Guide (PDF + digital)</li>
+        <li>Market Intelligence Framework &amp; templates</li>
+        <li>30-Day Launch Calendar — one action per day</li>
+        <li>No-Code Tech Stack Decision Trees</li>
+        <li>Automation Blueprints (email, ads, lead capture, delivery)</li>
+        <li>Paid Ads Playbook — Google Search + TikTok frameworks</li>
+        <li>Metrics Scorecard &amp; KPI tracking templates</li>
+        <li><strong style="color:var(--teal);">BONUS:</strong> End-to-End Security Checklist — 10-section plain-English audit for founders with no IT team</li>
+        <li>30-day money-back guarantee — no questions asked</li>
+      </ul>
+
+      <!--
+        CHECKOUT LINK: Replace href="#" with your actual Stripe payment link.
+        Example: href="https://buy.stripe.com/YOUR_PAYMENT_LINK"
+      -->
+      <a href="https://buy.stripe.com/14A00la8E2iFcgachK8IU00" target="_blank" class="btn btn--primary btn--full btn--lg"
+         id="pricing-cta"
+         onclick="
+           gtag('event','begin_checkout',{currency:'USD',value:97,items:[{item_id:'ntfg-001',item_name:'Non-Technical Founders Guide',price:97,quantity:1}]});
+           gtag('event','conversion',{'send_to':'AW-18099530997','value':97.0,'currency':'USD'});
+           ttq.track('InitiateCheckout',{content_id:'ntfg-001',content_name:'Non-Technical Founders Guide',currency:'USD',value:97,quantity:1});
+         ">
+        Get Instant Access — $97 →
+      </a>
+
+      <p class="price-card__lock">🔒 Secure checkout via Stripe &nbsp;·&nbsp; 30-day money-back guarantee</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================================
+     GUARANTEE
+=================================================================== -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee__inner">
+      <div class="guarantee__badge">
+        <span class="guarantee__days">30</span>
+        <span class="guarantee__label">Day Money<br>Back Guarantee</span>
+      </div>
+      <div class="guarantee__text">
+        <h3>You Either Get Results, or You Get Your Money Back</h3>
+        <p>
+          Go through the entire guide. Apply the frameworks. Follow the 30-day calendar. If after 30 days you don't believe this was worth every penny, email us and we'll issue a full refund — no questions asked, no forms to complete, no awkward calls. The risk is entirely ours.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     LEAD MAGNET
+=================================================================== -->
+<section class="lead-magnet">
+  <div class="container">
+    <div class="lead-magnet__box">
+
+      <span class="eyebrow eyebrow--teal eyebrow--pill">Free Resource</span>
+      <h2>Not Ready to Buy? Start Here.</h2>
+      <p>
+        Get the <strong>Non-Technical Founder's Quick-Start Checklist</strong> — the 12 decisions every founder must make before spending a dollar on tech or marketing. Free. No fluff. Instant delivery.
+      </p>
+
+      <!-- MailerLite Embedded Form — Free Checklist Signup -->
+      <div class="ml-embedded" data-form="ry3abS"></div>
+      <p class="ml-form__privacy" style="margin-top:12px;">No spam. One email with your download. Unsubscribe anytime.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     FINAL CTA
+=================================================================== -->
+<section class="final-cta">
+  <div class="container">
+    <span class="eyebrow eyebrow--teal">The decision</span>
+    <h2>Your competitors aren't more talented. They just have a better system.</h2>
+    <div class="divider divider--center"></div>
+    <p>The founders who build fast, build lean, and build profitably aren't geniuses. They follow a proven framework. This is that framework.</p>
+    <a href="#pricing" class="btn btn--primary btn--lg"
+       onclick="gtag('event','click',{event_category:'cta',event_label:'final_cta'});">
+      Get the Guide for $97 →
+    </a>
+    <p class="final-cta__note">30-day money-back guarantee &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; One-time payment</p>
+  </div>
+</section>
+
+<!-- ===================================================================
+     FOOTER
+=================================================================== -->
+<footer>
+  <div class="container">
+    <span class="footer__logo">The <span>Non-Technical</span> Founder</span>
+    <p>© 2026 The Non-Technical Founder. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Contact</a>
+    </p>
+    <p class="footer__disclaimer">
+      Results described are from real customers. Individual results will vary based on effort, market conditions, and application of the frameworks provided. This guide is for educational purposes and does not constitute financial or legal advice.
+    </p>
+  </div>
+</footer>
+
+<!-- ===================================================================
+     STICKY CTA BAR (mobile only)
+=================================================================== -->
+<div class="sticky-bar" id="sticky-bar">
+  <span class="sticky-bar__text">🔥 Launch offer — 40% off</span>
+  <a href="#pricing" class="btn btn--primary"
+     onclick="gtag('event','click',{event_category:'cta',event_label:'sticky_bar'});">
+    Get Access — $97
+  </a>
+</div>
+
+<!-- ===================================================================
+     JAVASCRIPT
+=================================================================== -->
+<script>
+  /* ---------------------------------------------------------------
+     FAQ accordion
+  --------------------------------------------------------------- */
+  document.querySelectorAll('.faq__q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = this.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq__item').forEach(function(i){ i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---------------------------------------------------------------
+     Sticky bar — show after user scrolls past hero
+  --------------------------------------------------------------- */
+  var hero    = document.querySelector('.hero');
+  var stickyBar = document.getElementById('sticky-bar');
+
+  if (hero && stickyBar) {
+    var obs = new IntersectionObserver(function(entries) {
+      stickyBar.style.display = entries[0].isIntersecting ? 'none' : 'flex';
+    }, { threshold: 0.1 });
+    obs.observe(hero);
+  }
+
+  /* ---------------------------------------------------------------
+     Scroll-depth tracking (GA4)
+  --------------------------------------------------------------- */
+  var depthsToTrack = [25, 50, 75, 90];
+  var depthsTracked = [];
+  window.addEventListener('scroll', function() {
+    var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    depthsToTrack.forEach(function(d) {
+      if (pct >= d && depthsTracked.indexOf(d) === -1) {
+        depthsTracked.push(d);
+        gtag('event', 'scroll_depth', { depth: d + '%' });
+      }
+    });
+  });
+
+  /* ---------------------------------------------------------------
+     Lead magnet form handler
+     (Placeholder — replace with MailerLite's own JS after embedding)
+  --------------------------------------------------------------- */
+  function handleLeadSubmit(btn) {
+    var name  = document.getElementById('lead-name').value.trim();
+    var email = document.getElementById('lead-email').value.trim();
+
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    /* Fire tracking */
+    gtag('event', 'generate_lead', { currency: 'USD', value: 0, event_category: 'lead_magnet', event_label: 'checklist_optin' });
+    ttq.track('SubmitForm', { content_name: 'Free Checklist Optin', email: email });
+
+    /* Visual feedback */
+    btn.textContent = '✓ Check your inbox!';
+    btn.style.background = 'var(--green)';
+    btn.style.boxShadow  = 'none';
+    btn.disabled = true;
+  }
+
+  /* ---------------------------------------------------------------
+     CTA purchase tracking — fires on checkout click
+  --------------------------------------------------------------- */
+  document.getElementById('pricing-cta').addEventListener('click', function() {
+    gtag('event', 'purchase_intent', { currency: 'USD', value: 97, event_label: 'pricing_cta' });
+  });
+</script>
+
+</body>
+</html>

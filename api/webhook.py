@@ -67,9 +67,18 @@ class handler(BaseHTTPRequestHandler):
             self._respond(400, {"error": "Invalid signature"})
             return
 
-        # Handle purchase
+        # Handle purchase — filter to Mudrost product only ($97 = 9700 cents)
+        # This webhook is on the same Stripe account as ERTRS, so we must
+        # ignore events from other products.
         if event["type"] == "checkout.session.completed":
-            session          = event["data"]["object"]
+            session      = event["data"]["object"]
+            amount_total = session.get("amount_total", 0)
+
+            if amount_total != 9700:
+                # Not a Mudrost purchase — ignore silently
+                self._respond(200, {"received": True, "action": "ignored"})
+                return
+
             customer_details = session.get("customer_details") or {}
             email = customer_details.get("email") or session.get("customer_email", "")
             name  = customer_details.get("name", "")
